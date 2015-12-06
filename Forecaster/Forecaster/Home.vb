@@ -12,6 +12,14 @@ Public Class frmForecaster
     End Sub
 
     Private Sub frmForecaster_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'Adjusts sizes of objects upon load to fit the screen accordingly.
+        chtPredictionChart.Width = Me.Width - 20
+        chtPredictionChart.Height = Me.Height / 2
+        dgvSalesData.Height = Me.Height - mnuMainMenu.Height - chtPredictionChart.Height - 20 'Sets the height 10px below the chart.
+        dgvSalesData.Width = Me.Width
+        'End of adjustments made to objects.
+
         OleDbDataAdapter1.Fill(DataSet11)
         If DataSet11.Sales.Rows.Count > 0 Then
             For i As Integer = 0 To DataSet11.Sales.Rows.Count - 1
@@ -74,4 +82,5 @@ Public Class frmForecaster
 
 
     End Sub
+
 End Class

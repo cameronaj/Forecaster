@@ -19,7 +19,7 @@ Class Predictions
             D = OleDbDataAdapter1.SelectCommand.ExecuteScalar() * N
             F = F + D
             wmWeek = wmWeek - 1
-            If wmWeek < 0 Then
+            If wmWeek < 1 Then
                 wmWeek = 53
                 wmYear = wmYear - 1
             End If

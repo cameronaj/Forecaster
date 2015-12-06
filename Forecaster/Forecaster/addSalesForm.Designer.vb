@@ -25,7 +25,7 @@ Partial Class frmAddSales
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAddSales))
         Me.lblDate = New System.Windows.Forms.Label()
         Me.mskDate = New System.Windows.Forms.MaskedTextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblAmount = New System.Windows.Forms.Label()
         Me.txtAmount = New System.Windows.Forms.TextBox()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.OleDbDataAdapter1 = New System.Data.OleDb.OleDbDataAdapter()
@@ -39,42 +39,47 @@ Partial Class frmAddSales
         'lblDate
         '
         Me.lblDate.AutoSize = True
-        Me.lblDate.Location = New System.Drawing.Point(55, 59)
+        Me.lblDate.Location = New System.Drawing.Point(56, 48)
+        Me.lblDate.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDate.Name = "lblDate"
-        Me.lblDate.Size = New System.Drawing.Size(38, 17)
+        Me.lblDate.Size = New System.Drawing.Size(30, 13)
         Me.lblDate.TabIndex = 0
         Me.lblDate.Text = "Date"
         '
         'mskDate
         '
-        Me.mskDate.Location = New System.Drawing.Point(117, 54)
+        Me.mskDate.Location = New System.Drawing.Point(103, 45)
+        Me.mskDate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.mskDate.Mask = "00/00/0000"
         Me.mskDate.Name = "mskDate"
-        Me.mskDate.Size = New System.Drawing.Size(100, 22)
+        Me.mskDate.Size = New System.Drawing.Size(76, 20)
         Me.mskDate.TabIndex = 1
         Me.mskDate.ValidatingType = GetType(Date)
         '
-        'Label1
+        'lblAmount
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(55, 107)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 17)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Amount"
+        Me.lblAmount.AutoSize = True
+        Me.lblAmount.Location = New System.Drawing.Point(56, 87)
+        Me.lblAmount.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblAmount.Name = "lblAmount"
+        Me.lblAmount.Size = New System.Drawing.Size(43, 13)
+        Me.lblAmount.TabIndex = 2
+        Me.lblAmount.Text = "Amount"
         '
         'txtAmount
         '
-        Me.txtAmount.Location = New System.Drawing.Point(117, 102)
+        Me.txtAmount.Location = New System.Drawing.Point(103, 83)
+        Me.txtAmount.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtAmount.Name = "txtAmount"
-        Me.txtAmount.Size = New System.Drawing.Size(100, 22)
+        Me.txtAmount.Size = New System.Drawing.Size(76, 20)
         Me.txtAmount.TabIndex = 3
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(81, 163)
+        Me.btnAdd.Location = New System.Drawing.Point(70, 128)
+        Me.btnAdd.Margin = New System.Windows.Forms.Padding(0)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(100, 23)
+        Me.btnAdd.Size = New System.Drawing.Size(100, 35)
         Me.btnAdd.TabIndex = 4
         Me.btnAdd.Text = "Add Record"
         Me.btnAdd.UseVisualStyleBackColor = True
@@ -108,19 +113,20 @@ Partial Class frmAddSales
         '
         'OleDbConnection1
         '
-        Me.OleDbConnection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Andrew\Documents\GitHub\For" &
+        Me.OleDbConnection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Andrew\Documents\GitHub\For" & _
     "ecaster\Forecaster\Forecaster\ForecasterDB.mdb"
         '
         'frmAddSales
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(280, 272)
+        Me.ClientSize = New System.Drawing.Size(234, 212)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.txtAmount)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblAmount)
         Me.Controls.Add(Me.mskDate)
         Me.Controls.Add(Me.lblDate)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "frmAddSales"
         Me.Text = "Add Sales"
         Me.ResumeLayout(False)
@@ -130,7 +136,7 @@ Partial Class frmAddSales
 
     Friend WithEvents lblDate As Label
     Friend WithEvents mskDate As MaskedTextBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblAmount As Label
     Friend WithEvents txtAmount As TextBox
     Friend WithEvents btnAdd As Button
     Friend WithEvents OleDbDataAdapter1 As OleDb.OleDbDataAdapter
