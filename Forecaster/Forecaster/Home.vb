@@ -79,7 +79,7 @@ Public Class frmForecaster
           OleDbDataAdapter1.UpdateCommand.Connection = OleDbConnection1
         Test = OleDbDataAdapter1.Update(DataSet11)
         OleDbConnection1.Close()
-
+        'need to add prediction for 7 days into the future!!!!!!!
 
     End Sub
 
