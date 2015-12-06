@@ -22,3 +22,4 @@ C:\Users\Andrew\Documents\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Fore
 \\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.frmForecaster.resources
 \\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.Resources.resources
 \\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.vbproj.GenerateResource.Cache
+C:\Users\Andrew\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.frmAddSales.resources

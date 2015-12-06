@@ -72,6 +72,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addSalesForm.designer.vb">
+      <DependentUpon>addSalesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="addSalesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataSet1.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,6 +108,9 @@
     <Compile Include="Predictions1.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="addSalesForm.resx">
+      <DependentUpon>addSalesForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.vb</DependentUpon>
     </EmbeddedResource>

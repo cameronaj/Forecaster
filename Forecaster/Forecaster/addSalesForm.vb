@@ -1,4 +1,11 @@
 ﻿Public Class frmAddSales
+
+    Private Sub frmAddSales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        mskDate.Text = Date.Now.Month.ToString.PadLeft(2, "0") & Date.Now.Day.ToString.PadLeft(2, "0") & Date.Now.Year
+
+    End Sub
+
+
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Dim test As Integer = 0
         Dim saledate As Date = mskDate.Text
@@ -18,7 +25,7 @@
 
             Dim exists As Integer = 0
             OleDbDataAdapter1.SelectCommand.Connection = OleDbConnection1
-            OleDbDataAdapter1.SelectCommand.CommandText = "SELECT ID FROM Sales WHERE sYear = " & saleyear & " AND sWeek = " & week_of_year & " AND sDay = '" & saleday & "'"
+            OleDbDataAdapter1.SelectCommand.CommandText = "SELECT ID FROM Sales WHERE sYear = " & saleyear & " And sWeek = " & week_of_year & " And sDay = '" & saleday & "'"
             exists = OleDbDataAdapter1.SelectCommand.ExecuteNonQuery()
             If exists > 0 Then
                 OleDbDataAdapter1.UpdateCommand.Connection = OleDbConnection1
@@ -40,4 +47,6 @@
         End If
 
     End Sub
+
+
 End Class
