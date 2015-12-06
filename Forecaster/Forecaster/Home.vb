@@ -55,4 +55,23 @@ Public Class frmForecaster
         mySecondForm.Show()
 
     End Sub
+
+    Private Sub ExponentialSmoothing()
+        Dim Test As Integer
+
+
+        For i As Integer = 0 To DataSet11.Sales.Rows.Count - 1
+            If DataSet11.Sales.Rows.Item(i)("sWeek") < 2 Then
+                DataSet11.Sales.Rows.Item(i)("ExpoSmoothing") = DataSet11.Sales.Rows.Item(i)("sAmount")
+            Else
+                DataSet11.Sales.Rows.Item(i)("ExpoSmoothing") = DataSet11.Sales.Rows.Item(i - 7)("ExpoSmoothing") + 0.01 * (DataSet11.Sales.Rows.Item(i - 7)("sAmount") - DataSet11.Sales.Rows.Item(i - 7)("ExpoSmoothing"))
+            End If
+        Next
+        OleDbConnection1.Open()
+          OleDbDataAdapter1.UpdateCommand.Connection = OleDbConnection1
+        Test = OleDbDataAdapter1.Update(DataSet11)
+        OleDbConnection1.Close()
+
+
+    End Sub
 End Class
