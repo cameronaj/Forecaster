@@ -49,4 +49,10 @@ Public Class frmForecaster
         Predictions.NaivePrediction()
     End Sub
 
+    Private Sub AddSalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddSalesToolStripMenuItem.Click
+        Dim mySecondForm As Form
+        mySecondForm = New frmAddSales
+        mySecondForm.Show()
+
+    End Sub
 End Class
