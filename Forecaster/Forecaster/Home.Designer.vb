@@ -52,6 +52,7 @@ Partial Class frmForecaster
         Me.SAmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DataSet11 = New Forecaster.DataSet1()
+        Me.AddSalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMainMenu.SuspendLayout()
         CType(Me.chtPredictionChart, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvSalesData, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,11 +63,11 @@ Partial Class frmForecaster
         'mnuMainMenu
         '
         Me.mnuMainMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataOptionsToolStripMenuItem, Me.ViewToolStripMenuItem})
+        Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataOptionsToolStripMenuItem, Me.ViewToolStripMenuItem, Me.AddSalesToolStripMenuItem})
         Me.mnuMainMenu.Location = New System.Drawing.Point(0, 0)
         Me.mnuMainMenu.Name = "mnuMainMenu"
-        Me.mnuMainMenu.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
-        Me.mnuMainMenu.Size = New System.Drawing.Size(646, 24)
+        Me.mnuMainMenu.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
+        Me.mnuMainMenu.Size = New System.Drawing.Size(861, 28)
         Me.mnuMainMenu.TabIndex = 0
         Me.mnuMainMenu.Text = "MainMenu"
         '
@@ -74,56 +75,56 @@ Partial Class frmForecaster
         '
         Me.DataOptionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditSavedDataToolStripMenuItem, Me.EditSavedDataToolStripMenuItem1, Me.ClearSavedDataToolStripMenuItem, Me.CloseToolStripMenuItem})
         Me.DataOptionsToolStripMenuItem.Name = "DataOptionsToolStripMenuItem"
-        Me.DataOptionsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.DataOptionsToolStripMenuItem.Size = New System.Drawing.Size(73, 24)
         Me.DataOptionsToolStripMenuItem.Text = "Options"
         '
         'EditSavedDataToolStripMenuItem
         '
         Me.EditSavedDataToolStripMenuItem.Name = "EditSavedDataToolStripMenuItem"
-        Me.EditSavedDataToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.EditSavedDataToolStripMenuItem.Size = New System.Drawing.Size(198, 26)
         Me.EditSavedDataToolStripMenuItem.Text = "Add Data"
         '
         'EditSavedDataToolStripMenuItem1
         '
         Me.EditSavedDataToolStripMenuItem1.Name = "EditSavedDataToolStripMenuItem1"
-        Me.EditSavedDataToolStripMenuItem1.Size = New System.Drawing.Size(162, 22)
+        Me.EditSavedDataToolStripMenuItem1.Size = New System.Drawing.Size(198, 26)
         Me.EditSavedDataToolStripMenuItem1.Text = "Edit Saved Data"
         '
         'ClearSavedDataToolStripMenuItem
         '
         Me.ClearSavedDataToolStripMenuItem.Name = "ClearSavedDataToolStripMenuItem"
-        Me.ClearSavedDataToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.ClearSavedDataToolStripMenuItem.Size = New System.Drawing.Size(198, 26)
         Me.ClearSavedDataToolStripMenuItem.Text = "Clear Saved Data"
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(198, 26)
         Me.CloseToolStripMenuItem.Text = "Close"
         '
         'ViewToolStripMenuItem
         '
         Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeekToolStripMenuItem, Me.MonthToolStripMenuItem, Me.YearToolStripMenuItem})
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
-        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(53, 24)
         Me.ViewToolStripMenuItem.Text = "View"
         '
         'WeekToolStripMenuItem
         '
         Me.WeekToolStripMenuItem.Name = "WeekToolStripMenuItem"
-        Me.WeekToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
+        Me.WeekToolStripMenuItem.Size = New System.Drawing.Size(127, 26)
         Me.WeekToolStripMenuItem.Text = "Week"
         '
         'MonthToolStripMenuItem
         '
         Me.MonthToolStripMenuItem.Name = "MonthToolStripMenuItem"
-        Me.MonthToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
+        Me.MonthToolStripMenuItem.Size = New System.Drawing.Size(127, 26)
         Me.MonthToolStripMenuItem.Text = "Month"
         '
         'YearToolStripMenuItem
         '
         Me.YearToolStripMenuItem.Name = "YearToolStripMenuItem"
-        Me.YearToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
+        Me.YearToolStripMenuItem.Size = New System.Drawing.Size(127, 26)
         Me.YearToolStripMenuItem.Text = "Year"
         '
         'OleDbSelectCommand1
@@ -133,7 +134,7 @@ Partial Class frmForecaster
         '
         'OleDbConnection1
         '
-        Me.OleDbConnection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Andrew\Documents\GitHub\For" & _
+        Me.OleDbConnection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Andrew\Documents\GitHub\For" &
     "ecaster\Forecaster\Forecaster\ForecasterDB.mdb"
         '
         'OleDbInsertCommand1
@@ -168,15 +169,15 @@ Partial Class frmForecaster
         Me.chtPredictionChart.ChartAreas.Add(ChartArea1)
         Legend1.Name = "Legend1"
         Me.chtPredictionChart.Legends.Add(Legend1)
-        Me.chtPredictionChart.Location = New System.Drawing.Point(9, 25)
-        Me.chtPredictionChart.Margin = New System.Windows.Forms.Padding(2)
+        Me.chtPredictionChart.Location = New System.Drawing.Point(12, 31)
+        Me.chtPredictionChart.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.chtPredictionChart.Name = "chtPredictionChart"
         Series1.ChartArea = "ChartArea1"
         Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
         Series1.Legend = "Legend1"
         Series1.Name = "Sales"
         Me.chtPredictionChart.Series.Add(Series1)
-        Me.chtPredictionChart.Size = New System.Drawing.Size(451, 273)
+        Me.chtPredictionChart.Size = New System.Drawing.Size(601, 336)
         Me.chtPredictionChart.TabIndex = 1
         Me.chtPredictionChart.Text = "Prediction Chart"
         '
@@ -186,11 +187,11 @@ Partial Class frmForecaster
         Me.dgvSalesData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvSalesData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.SYearDataGridViewTextBoxColumn, Me.SWeekDataGridViewTextBoxColumn, Me.SDayDataGridViewTextBoxColumn, Me.SAmountDataGridViewTextBoxColumn})
         Me.dgvSalesData.DataSource = Me.SalesBindingSource
-        Me.dgvSalesData.Location = New System.Drawing.Point(9, 303)
-        Me.dgvSalesData.Margin = New System.Windows.Forms.Padding(2)
+        Me.dgvSalesData.Location = New System.Drawing.Point(12, 373)
+        Me.dgvSalesData.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.dgvSalesData.Name = "dgvSalesData"
         Me.dgvSalesData.RowTemplate.Height = 24
-        Me.dgvSalesData.Size = New System.Drawing.Size(628, 158)
+        Me.dgvSalesData.Size = New System.Drawing.Size(837, 194)
         Me.dgvSalesData.TabIndex = 2
         '
         'ID
@@ -238,16 +239,22 @@ Partial Class frmForecaster
         Me.DataSet11.DataSetName = "DataSet1"
         Me.DataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'AddSalesToolStripMenuItem
+        '
+        Me.AddSalesToolStripMenuItem.Name = "AddSalesToolStripMenuItem"
+        Me.AddSalesToolStripMenuItem.Size = New System.Drawing.Size(87, 24)
+        Me.AddSalesToolStripMenuItem.Text = "Add Sales"
+        '
         'frmForecaster
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(646, 482)
+        Me.ClientSize = New System.Drawing.Size(861, 593)
         Me.Controls.Add(Me.dgvSalesData)
         Me.Controls.Add(Me.chtPredictionChart)
         Me.Controls.Add(Me.mnuMainMenu)
         Me.MainMenuStrip = Me.mnuMainMenu
-        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "frmForecaster"
         Me.Text = "Forecaster"
         Me.mnuMainMenu.ResumeLayout(False)
@@ -286,4 +293,5 @@ Partial Class frmForecaster
     Friend WithEvents SWeekDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SDayDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SAmountDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents AddSalesToolStripMenuItem As ToolStripMenuItem
 End Class
