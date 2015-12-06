@@ -10,3 +10,15 @@ C:\Users\Andrew\Documents\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Fore
 C:\Users\Andrew\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.exe
 C:\Users\Andrew\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.pdb
 C:\Users\Andrew\Documents\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\ForecasterDB.mdb
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.exe.config
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.exe
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.xml
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.pdb
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\bin\Debug\ForecasterDB.mdb
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.exe
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.pdb
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.xml
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.vbprojResolveAssemblyReference.cache
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.frmForecaster.resources
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.Resources.resources
+\\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.vbproj.GenerateResource.Cache

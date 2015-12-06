@@ -1,5 +1,7 @@
 ﻿Imports System.Data.OleDb
 Imports System.Windows.Forms.DataVisualization.Charting
+Imports Forecaster
+
 
 Public Class frmForecaster
 
@@ -42,4 +44,9 @@ Public Class frmForecaster
             End If
         End If
     End Sub
+
+    Private Sub Test(sender As Object, e As EventArgs)
+        Predictions.NaivePrediction()
+    End Sub
+
 End Class
