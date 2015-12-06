@@ -132,7 +132,8 @@ Partial Class frmForecaster
         '
         'OleDbConnection1
         '
-        Me.OleDbConnection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\ForecasterDB.mdb"
+        Me.OleDbConnection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Andrew\Documents\GitHub\For" &
+    "ecaster\Forecaster\Forecaster\ForecasterDB.mdb"
         '
         'OleDbInsertCommand1
         '
