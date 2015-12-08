@@ -26,17 +26,20 @@ Partial Class frmForecaster
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmForecaster))
         Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.mnuMainMenu = New System.Windows.Forms.MenuStrip()
         Me.DataOptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditSavedDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditSavedDataToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearSavedDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.WeekToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MonthToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.YearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewByToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ByAllDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Last2WeeksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Last4WeeksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Last8WeeksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Last12WeeksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddSalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OleDbSelectCommand1 = New System.Data.OleDb.OleDbCommand()
         Me.OleDbConnection1 = New System.Data.OleDb.OleDbConnection()
@@ -51,8 +54,15 @@ Partial Class frmForecaster
         Me.SWeekDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SDayDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SAmountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Naive = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ExpoSmoothing = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MovingWeight = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SalesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DataSet11 = New Forecaster.DataSet1()
+        Me.chkRecordedSales = New System.Windows.Forms.CheckBox()
+        Me.chkNaive = New System.Windows.Forms.CheckBox()
+        Me.chkMovingWeight = New System.Windows.Forms.CheckBox()
+        Me.chkExpoSmoothing = New System.Windows.Forms.CheckBox()
         Me.mnuMainMenu.SuspendLayout()
         CType(Me.chtPredictionChart, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvSalesData, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,110 +73,114 @@ Partial Class frmForecaster
         'mnuMainMenu
         '
         Me.mnuMainMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataOptionsToolStripMenuItem, Me.ViewToolStripMenuItem, Me.AddSalesToolStripMenuItem})
+        Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataOptionsToolStripMenuItem, Me.ViewByToolStripMenuItem, Me.AddSalesToolStripMenuItem})
         Me.mnuMainMenu.Location = New System.Drawing.Point(0, 0)
         Me.mnuMainMenu.Name = "mnuMainMenu"
-        Me.mnuMainMenu.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
-        Me.mnuMainMenu.Size = New System.Drawing.Size(784, 24)
+        Me.mnuMainMenu.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
+        Me.mnuMainMenu.Size = New System.Drawing.Size(1310, 28)
         Me.mnuMainMenu.TabIndex = 0
         Me.mnuMainMenu.Text = "MainMenu"
         '
         'DataOptionsToolStripMenuItem
         '
-        Me.DataOptionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditSavedDataToolStripMenuItem, Me.EditSavedDataToolStripMenuItem1, Me.ClearSavedDataToolStripMenuItem, Me.CloseToolStripMenuItem})
+        Me.DataOptionsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearSavedDataToolStripMenuItem, Me.CloseToolStripMenuItem})
         Me.DataOptionsToolStripMenuItem.Name = "DataOptionsToolStripMenuItem"
-        Me.DataOptionsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.DataOptionsToolStripMenuItem.Size = New System.Drawing.Size(73, 24)
         Me.DataOptionsToolStripMenuItem.Text = "Options"
-        '
-        'EditSavedDataToolStripMenuItem
-        '
-        Me.EditSavedDataToolStripMenuItem.Name = "EditSavedDataToolStripMenuItem"
-        Me.EditSavedDataToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
-        Me.EditSavedDataToolStripMenuItem.Text = "Add Data"
-        '
-        'EditSavedDataToolStripMenuItem1
-        '
-        Me.EditSavedDataToolStripMenuItem1.Name = "EditSavedDataToolStripMenuItem1"
-        Me.EditSavedDataToolStripMenuItem1.Size = New System.Drawing.Size(162, 22)
-        Me.EditSavedDataToolStripMenuItem1.Text = "Edit Saved Data"
         '
         'ClearSavedDataToolStripMenuItem
         '
         Me.ClearSavedDataToolStripMenuItem.Name = "ClearSavedDataToolStripMenuItem"
-        Me.ClearSavedDataToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.ClearSavedDataToolStripMenuItem.Size = New System.Drawing.Size(198, 26)
         Me.ClearSavedDataToolStripMenuItem.Text = "Clear Saved Data"
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(198, 26)
         Me.CloseToolStripMenuItem.Text = "Close"
         '
-        'ViewToolStripMenuItem
+        'ViewByToolStripMenuItem
         '
-        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WeekToolStripMenuItem, Me.MonthToolStripMenuItem, Me.YearToolStripMenuItem})
-        Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
-        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-        Me.ViewToolStripMenuItem.Text = "View"
+        Me.ViewByToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ByAllDataToolStripMenuItem, Me.Last2WeeksToolStripMenuItem, Me.Last4WeeksToolStripMenuItem, Me.Last8WeeksToolStripMenuItem, Me.Last12WeeksToolStripMenuItem})
+        Me.ViewByToolStripMenuItem.Name = "ViewByToolStripMenuItem"
+        Me.ViewByToolStripMenuItem.Size = New System.Drawing.Size(53, 24)
+        Me.ViewByToolStripMenuItem.Text = "View"
         '
-        'WeekToolStripMenuItem
+        'ByAllDataToolStripMenuItem
         '
-        Me.WeekToolStripMenuItem.Name = "WeekToolStripMenuItem"
-        Me.WeekToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
-        Me.WeekToolStripMenuItem.Text = "Week"
+        Me.ByAllDataToolStripMenuItem.Checked = True
+        Me.ByAllDataToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ByAllDataToolStripMenuItem.Name = "ByAllDataToolStripMenuItem"
+        Me.ByAllDataToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.ByAllDataToolStripMenuItem.Text = "All Data"
         '
-        'MonthToolStripMenuItem
+        'Last2WeeksToolStripMenuItem
         '
-        Me.MonthToolStripMenuItem.Name = "MonthToolStripMenuItem"
-        Me.MonthToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
-        Me.MonthToolStripMenuItem.Text = "Month"
+        Me.Last2WeeksToolStripMenuItem.Name = "Last2WeeksToolStripMenuItem"
+        Me.Last2WeeksToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.Last2WeeksToolStripMenuItem.Text = "Last 2 Weeks"
         '
-        'YearToolStripMenuItem
+        'Last4WeeksToolStripMenuItem
         '
-        Me.YearToolStripMenuItem.Name = "YearToolStripMenuItem"
-        Me.YearToolStripMenuItem.Size = New System.Drawing.Size(110, 22)
-        Me.YearToolStripMenuItem.Text = "Year"
+        Me.Last4WeeksToolStripMenuItem.Name = "Last4WeeksToolStripMenuItem"
+        Me.Last4WeeksToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.Last4WeeksToolStripMenuItem.Text = "Last 4 Weeks"
+        '
+        'Last8WeeksToolStripMenuItem
+        '
+        Me.Last8WeeksToolStripMenuItem.Name = "Last8WeeksToolStripMenuItem"
+        Me.Last8WeeksToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.Last8WeeksToolStripMenuItem.Text = "Last 8 Weeks"
+        '
+        'Last12WeeksToolStripMenuItem
+        '
+        Me.Last12WeeksToolStripMenuItem.Name = "Last12WeeksToolStripMenuItem"
+        Me.Last12WeeksToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.Last12WeeksToolStripMenuItem.Text = "Last 12 Weeks"
         '
         'AddSalesToolStripMenuItem
         '
         Me.AddSalesToolStripMenuItem.Name = "AddSalesToolStripMenuItem"
-        Me.AddSalesToolStripMenuItem.Size = New System.Drawing.Size(70, 20)
+        Me.AddSalesToolStripMenuItem.Size = New System.Drawing.Size(87, 24)
         Me.AddSalesToolStripMenuItem.Text = "Add Sales"
         '
         'OleDbSelectCommand1
         '
-        Me.OleDbSelectCommand1.CommandText = "SELECT ID, sYear, sWeek, sDay, sAmount" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM     Sales"
+        Me.OleDbSelectCommand1.CommandText = "SELECT ID, sYear, sWeek, sDay, sAmount, Naive, MovingWeight, ExpoSmoothing" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM " &
+    "    Sales"
         Me.OleDbSelectCommand1.Connection = Me.OleDbConnection1
         '
         'OleDbConnection1
         '
-        Me.OleDbConnection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Andrew\Documents\GitHub\For" & _
+        Me.OleDbConnection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Andrew\Documents\GitHub\For" &
     "ecaster\Forecaster\Forecaster\ForecasterDB.mdb"
         '
         'OleDbInsertCommand1
         '
-        Me.OleDbInsertCommand1.CommandText = "INSERT INTO `Sales` (`sYear`, `sWeek`, `sDay`, `sAmount`) VALUES (?, ?, ?, ?)"
+        Me.OleDbInsertCommand1.CommandText = "INSERT INTO `Sales` (`sYear`, `sWeek`, `sDay`, `sAmount`, `Naive`, `MovingWeight`" &
+    ", `ExpoSmoothing`) VALUES (?, ?, ?, ?, ?, ?, ?)"
         Me.OleDbInsertCommand1.Connection = Me.OleDbConnection1
-        Me.OleDbInsertCommand1.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("sYear", System.Data.OleDb.OleDbType.[Integer], 0, "sYear"), New System.Data.OleDb.OleDbParameter("sWeek", System.Data.OleDb.OleDbType.[Integer], 0, "sWeek"), New System.Data.OleDb.OleDbParameter("sDay", System.Data.OleDb.OleDbType.VarWChar, 0, "sDay"), New System.Data.OleDb.OleDbParameter("sAmount", System.Data.OleDb.OleDbType.Currency, 0, "sAmount")})
+        Me.OleDbInsertCommand1.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("sYear", System.Data.OleDb.OleDbType.[Integer], 0, "sYear"), New System.Data.OleDb.OleDbParameter("sWeek", System.Data.OleDb.OleDbType.[Integer], 0, "sWeek"), New System.Data.OleDb.OleDbParameter("sDay", System.Data.OleDb.OleDbType.VarWChar, 0, "sDay"), New System.Data.OleDb.OleDbParameter("sAmount", System.Data.OleDb.OleDbType.Currency, 0, "sAmount"), New System.Data.OleDb.OleDbParameter("Naive", System.Data.OleDb.OleDbType.Currency, 0, "Naive"), New System.Data.OleDb.OleDbParameter("MovingWeight", System.Data.OleDb.OleDbType.Currency, 0, "MovingWeight"), New System.Data.OleDb.OleDbParameter("ExpoSmoothing", System.Data.OleDb.OleDbType.Currency, 0, "ExpoSmoothing")})
         '
         'OleDbUpdateCommand1
         '
         Me.OleDbUpdateCommand1.CommandText = resources.GetString("OleDbUpdateCommand1.CommandText")
         Me.OleDbUpdateCommand1.Connection = Me.OleDbConnection1
-        Me.OleDbUpdateCommand1.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("sYear", System.Data.OleDb.OleDbType.[Integer], 0, "sYear"), New System.Data.OleDb.OleDbParameter("sWeek", System.Data.OleDb.OleDbType.[Integer], 0, "sWeek"), New System.Data.OleDb.OleDbParameter("sDay", System.Data.OleDb.OleDbType.VarWChar, 0, "sDay"), New System.Data.OleDb.OleDbParameter("sAmount", System.Data.OleDb.OleDbType.Currency, 0, "sAmount"), New System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "ID", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sYear", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sYear", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sYear", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sYear", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sWeek", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sWeek", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sWeek", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sWeek", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sDay", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sDay", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sDay", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sDay", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sAmount", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sAmount", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sAmount", System.Data.OleDb.OleDbType.Currency, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sAmount", System.Data.DataRowVersion.Original, Nothing)})
+        Me.OleDbUpdateCommand1.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("sYear", System.Data.OleDb.OleDbType.[Integer], 0, "sYear"), New System.Data.OleDb.OleDbParameter("sWeek", System.Data.OleDb.OleDbType.[Integer], 0, "sWeek"), New System.Data.OleDb.OleDbParameter("sDay", System.Data.OleDb.OleDbType.VarWChar, 0, "sDay"), New System.Data.OleDb.OleDbParameter("sAmount", System.Data.OleDb.OleDbType.Currency, 0, "sAmount"), New System.Data.OleDb.OleDbParameter("Naive", System.Data.OleDb.OleDbType.Currency, 0, "Naive"), New System.Data.OleDb.OleDbParameter("MovingWeight", System.Data.OleDb.OleDbType.Currency, 0, "MovingWeight"), New System.Data.OleDb.OleDbParameter("ExpoSmoothing", System.Data.OleDb.OleDbType.Currency, 0, "ExpoSmoothing"), New System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "ID", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sYear", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sYear", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sYear", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sYear", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sWeek", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sWeek", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sWeek", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sWeek", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sDay", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sDay", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sDay", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sDay", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sAmount", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sAmount", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sAmount", System.Data.OleDb.OleDbType.Currency, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sAmount", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_Naive", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Naive", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_Naive", System.Data.OleDb.OleDbType.Currency, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "Naive", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_MovingWeight", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "MovingWeight", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_MovingWeight", System.Data.OleDb.OleDbType.Currency, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "MovingWeight", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_ExpoSmoothing", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ExpoSmoothing", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_ExpoSmoothing", System.Data.OleDb.OleDbType.Currency, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "ExpoSmoothing", System.Data.DataRowVersion.Original, Nothing)})
         '
         'OleDbDeleteCommand1
         '
         Me.OleDbDeleteCommand1.CommandText = resources.GetString("OleDbDeleteCommand1.CommandText")
         Me.OleDbDeleteCommand1.Connection = Me.OleDbConnection1
-        Me.OleDbDeleteCommand1.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "ID", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sYear", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sYear", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sYear", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sYear", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sWeek", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sWeek", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sWeek", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sWeek", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sDay", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sDay", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sDay", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sDay", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sAmount", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sAmount", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sAmount", System.Data.OleDb.OleDbType.Currency, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sAmount", System.Data.DataRowVersion.Original, Nothing)})
+        Me.OleDbDeleteCommand1.Parameters.AddRange(New System.Data.OleDb.OleDbParameter() {New System.Data.OleDb.OleDbParameter("Original_ID", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "ID", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sYear", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sYear", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sYear", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sYear", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sWeek", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sWeek", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sWeek", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sWeek", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sDay", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sDay", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sDay", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sDay", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_sAmount", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "sAmount", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_sAmount", System.Data.OleDb.OleDbType.Currency, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "sAmount", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_Naive", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "Naive", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_Naive", System.Data.OleDb.OleDbType.Currency, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "Naive", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_MovingWeight", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "MovingWeight", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_MovingWeight", System.Data.OleDb.OleDbType.Currency, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "MovingWeight", System.Data.DataRowVersion.Original, Nothing), New System.Data.OleDb.OleDbParameter("IsNull_ExpoSmoothing", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ExpoSmoothing", System.Data.DataRowVersion.Original, True, Nothing), New System.Data.OleDb.OleDbParameter("Original_ExpoSmoothing", System.Data.OleDb.OleDbType.Currency, 0, System.Data.ParameterDirection.Input, False, CType(0, Byte), CType(0, Byte), "ExpoSmoothing", System.Data.DataRowVersion.Original, Nothing)})
         '
         'OleDbDataAdapter1
         '
         Me.OleDbDataAdapter1.DeleteCommand = Me.OleDbDeleteCommand1
         Me.OleDbDataAdapter1.InsertCommand = Me.OleDbInsertCommand1
         Me.OleDbDataAdapter1.SelectCommand = Me.OleDbSelectCommand1
-        Me.OleDbDataAdapter1.TableMappings.AddRange(New System.Data.Common.DataTableMapping() {New System.Data.Common.DataTableMapping("Table", "Sales", New System.Data.Common.DataColumnMapping() {New System.Data.Common.DataColumnMapping("ID", "ID"), New System.Data.Common.DataColumnMapping("sYear", "sYear"), New System.Data.Common.DataColumnMapping("sWeek", "sWeek"), New System.Data.Common.DataColumnMapping("sDay", "sDay"), New System.Data.Common.DataColumnMapping("sAmount", "sAmount")})})
+        Me.OleDbDataAdapter1.TableMappings.AddRange(New System.Data.Common.DataTableMapping() {New System.Data.Common.DataTableMapping("Table", "Sales", New System.Data.Common.DataColumnMapping() {New System.Data.Common.DataColumnMapping("ID", "ID"), New System.Data.Common.DataColumnMapping("sYear", "sYear"), New System.Data.Common.DataColumnMapping("sWeek", "sWeek"), New System.Data.Common.DataColumnMapping("sDay", "sDay"), New System.Data.Common.DataColumnMapping("sAmount", "sAmount"), New System.Data.Common.DataColumnMapping("Naive", "Naive"), New System.Data.Common.DataColumnMapping("MovingWeight", "MovingWeight"), New System.Data.Common.DataColumnMapping("ExpoSmoothing", "ExpoSmoothing")})})
         Me.OleDbDataAdapter1.UpdateCommand = Me.OleDbUpdateCommand1
         '
         'chtPredictionChart
@@ -175,30 +189,73 @@ Partial Class frmForecaster
         Me.chtPredictionChart.ChartAreas.Add(ChartArea2)
         Legend2.Name = "Legend1"
         Me.chtPredictionChart.Legends.Add(Legend2)
-        Me.chtPredictionChart.Location = New System.Drawing.Point(10, 34)
+        Me.chtPredictionChart.Location = New System.Drawing.Point(0, 42)
         Me.chtPredictionChart.Margin = New System.Windows.Forms.Padding(0)
         Me.chtPredictionChart.Name = "chtPredictionChart"
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series2.Legend = "Legend1"
-        Series2.Name = "Sales"
-        Me.chtPredictionChart.Series.Add(Series2)
-        Me.chtPredictionChart.Size = New System.Drawing.Size(755, 347)
+        Me.chtPredictionChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright
+        Series5.BorderWidth = 5
+        Series5.ChartArea = "ChartArea1"
+        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series5.Color = System.Drawing.Color.Purple
+        Series5.Legend = "Legend1"
+        Series5.MarkerColor = System.Drawing.Color.White
+        Series5.MarkerSize = 1
+        Series5.Name = "Niave"
+        Series5.SmartLabelStyle.MaxMovingDistance = 75.0R
+        Series6.BorderWidth = 4
+        Series6.ChartArea = "ChartArea1"
+        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series6.Color = System.Drawing.Color.Crimson
+        Series6.Legend = "Legend1"
+        Series6.MarkerBorderWidth = 4
+        Series6.MarkerColor = System.Drawing.Color.Gold
+        Series6.MarkerSize = 10
+        Series6.MarkerStep = 2
+        Series6.Name = "ES"
+        Series7.BorderWidth = 3
+        Series7.ChartArea = "ChartArea1"
+        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series7.Color = System.Drawing.Color.RoyalBlue
+        Series7.Legend = "Legend1"
+        Series7.MarkerBorderWidth = 4
+        Series7.MarkerColor = System.Drawing.Color.Gold
+        Series7.MarkerSize = 10
+        Series7.MarkerStep = 2
+        Series7.Name = "MVA"
+        Series8.BorderWidth = 2
+        Series8.ChartArea = "ChartArea1"
+        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series8.Color = System.Drawing.Color.Lime
+        Series8.IsValueShownAsLabel = True
+        Series8.Legend = "Legend1"
+        Series8.MarkerBorderWidth = 4
+        Series8.MarkerColor = System.Drawing.Color.Gold
+        Series8.MarkerSize = 10
+        Series8.MarkerStep = 2
+        Series8.Name = "Sales"
+        Series8.YValuesPerPoint = 4
+        Me.chtPredictionChart.Series.Add(Series5)
+        Me.chtPredictionChart.Series.Add(Series6)
+        Me.chtPredictionChart.Series.Add(Series7)
+        Me.chtPredictionChart.Series.Add(Series8)
+        Me.chtPredictionChart.Size = New System.Drawing.Size(719, 725)
         Me.chtPredictionChart.TabIndex = 1
         Me.chtPredictionChart.Text = "Prediction Chart"
         '
         'dgvSalesData
         '
+        Me.dgvSalesData.AllowUserToAddRows = False
+        Me.dgvSalesData.AllowUserToDeleteRows = False
         Me.dgvSalesData.AutoGenerateColumns = False
         Me.dgvSalesData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvSalesData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.SYearDataGridViewTextBoxColumn, Me.SWeekDataGridViewTextBoxColumn, Me.SDayDataGridViewTextBoxColumn, Me.SAmountDataGridViewTextBoxColumn})
+        Me.dgvSalesData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.SYearDataGridViewTextBoxColumn, Me.SWeekDataGridViewTextBoxColumn, Me.SDayDataGridViewTextBoxColumn, Me.SAmountDataGridViewTextBoxColumn, Me.Naive, Me.ExpoSmoothing, Me.MovingWeight})
         Me.dgvSalesData.DataSource = Me.SalesBindingSource
-        Me.dgvSalesData.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.dgvSalesData.Location = New System.Drawing.Point(0, 391)
-        Me.dgvSalesData.Margin = New System.Windows.Forms.Padding(2, 10, 2, 2)
+        Me.dgvSalesData.Location = New System.Drawing.Point(722, 40)
+        Me.dgvSalesData.Margin = New System.Windows.Forms.Padding(3, 12, 3, 2)
         Me.dgvSalesData.Name = "dgvSalesData"
+        Me.dgvSalesData.ReadOnly = True
         Me.dgvSalesData.RowTemplate.Height = 24
-        Me.dgvSalesData.Size = New System.Drawing.Size(784, 171)
+        Me.dgvSalesData.Size = New System.Drawing.Size(588, 765)
         Me.dgvSalesData.TabIndex = 2
         '
         'ID
@@ -235,6 +292,28 @@ Partial Class frmForecaster
         Me.SAmountDataGridViewTextBoxColumn.DataPropertyName = "sAmount"
         Me.SAmountDataGridViewTextBoxColumn.HeaderText = "Amount in Sales"
         Me.SAmountDataGridViewTextBoxColumn.Name = "SAmountDataGridViewTextBoxColumn"
+        Me.SAmountDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Naive
+        '
+        Me.Naive.DataPropertyName = "Naive"
+        Me.Naive.HeaderText = "Naive"
+        Me.Naive.Name = "Naive"
+        Me.Naive.ReadOnly = True
+        '
+        'ExpoSmoothing
+        '
+        Me.ExpoSmoothing.DataPropertyName = "ExpoSmoothing"
+        Me.ExpoSmoothing.HeaderText = "ExpoSmoothing"
+        Me.ExpoSmoothing.Name = "ExpoSmoothing"
+        Me.ExpoSmoothing.ReadOnly = True
+        '
+        'MovingWeight
+        '
+        Me.MovingWeight.DataPropertyName = "MovingWeight"
+        Me.MovingWeight.HeaderText = "MovingWeight"
+        Me.MovingWeight.Name = "MovingWeight"
+        Me.MovingWeight.ReadOnly = True
         '
         'SalesBindingSource
         '
@@ -246,19 +325,70 @@ Partial Class frmForecaster
         Me.DataSet11.DataSetName = "DataSet1"
         Me.DataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'chkRecordedSales
+        '
+        Me.chkRecordedSales.AutoSize = True
+        Me.chkRecordedSales.Checked = True
+        Me.chkRecordedSales.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkRecordedSales.Location = New System.Drawing.Point(39, 42)
+        Me.chkRecordedSales.Name = "chkRecordedSales"
+        Me.chkRecordedSales.Size = New System.Drawing.Size(131, 21)
+        Me.chkRecordedSales.TabIndex = 3
+        Me.chkRecordedSales.Text = "Recorded Sales"
+        Me.chkRecordedSales.UseVisualStyleBackColor = True
+        '
+        'chkNaive
+        '
+        Me.chkNaive.AutoSize = True
+        Me.chkNaive.Checked = True
+        Me.chkNaive.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkNaive.Location = New System.Drawing.Point(176, 42)
+        Me.chkNaive.Name = "chkNaive"
+        Me.chkNaive.Size = New System.Drawing.Size(66, 21)
+        Me.chkNaive.TabIndex = 4
+        Me.chkNaive.Text = "Niave"
+        Me.chkNaive.UseVisualStyleBackColor = True
+        '
+        'chkMovingWeight
+        '
+        Me.chkMovingWeight.AutoSize = True
+        Me.chkMovingWeight.Checked = True
+        Me.chkMovingWeight.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkMovingWeight.Location = New System.Drawing.Point(428, 42)
+        Me.chkMovingWeight.Name = "chkMovingWeight"
+        Me.chkMovingWeight.Size = New System.Drawing.Size(196, 21)
+        Me.chkMovingWeight.TabIndex = 5
+        Me.chkMovingWeight.Text = "Moving Weighted Average"
+        Me.chkMovingWeight.UseVisualStyleBackColor = True
+        '
+        'chkExpoSmoothing
+        '
+        Me.chkExpoSmoothing.AutoSize = True
+        Me.chkExpoSmoothing.Checked = True
+        Me.chkExpoSmoothing.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkExpoSmoothing.Location = New System.Drawing.Point(248, 42)
+        Me.chkExpoSmoothing.Name = "chkExpoSmoothing"
+        Me.chkExpoSmoothing.Size = New System.Drawing.Size(174, 21)
+        Me.chkExpoSmoothing.TabIndex = 6
+        Me.chkExpoSmoothing.Text = "Exponential Smoothing"
+        Me.chkExpoSmoothing.UseVisualStyleBackColor = True
+        '
         'frmForecaster
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 562)
+        Me.ClientSize = New System.Drawing.Size(1310, 803)
+        Me.Controls.Add(Me.chkExpoSmoothing)
+        Me.Controls.Add(Me.chkMovingWeight)
+        Me.Controls.Add(Me.chkNaive)
+        Me.Controls.Add(Me.chkRecordedSales)
         Me.Controls.Add(Me.mnuMainMenu)
         Me.Controls.Add(Me.chtPredictionChart)
         Me.Controls.Add(Me.dgvSalesData)
         Me.MainMenuStrip = Me.mnuMainMenu
-        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "frmForecaster"
         Me.Text = "Forecaster"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.mnuMainMenu.ResumeLayout(False)
         Me.mnuMainMenu.PerformLayout()
         CType(Me.chtPredictionChart, System.ComponentModel.ISupportInitialize).EndInit()
@@ -272,12 +402,6 @@ Partial Class frmForecaster
 
     Friend WithEvents mnuMainMenu As MenuStrip
     Friend WithEvents DataOptionsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EditSavedDataToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents WeekToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents MonthToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents YearToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EditSavedDataToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ClearSavedDataToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CloseToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OleDbSelectCommand1 As OleDb.OleDbCommand
@@ -290,10 +414,23 @@ Partial Class frmForecaster
     Friend WithEvents chtPredictionChart As DataVisualization.Charting.Chart
     Friend WithEvents dgvSalesData As DataGridView
     Friend WithEvents SalesBindingSource As BindingSource
+    Friend WithEvents AddSalesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ID As DataGridViewTextBoxColumn
     Friend WithEvents SYearDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SWeekDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SDayDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SAmountDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AddSalesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Naive As DataGridViewTextBoxColumn
+    Friend WithEvents ExpoSmoothing As DataGridViewTextBoxColumn
+    Friend WithEvents MovingWeight As DataGridViewTextBoxColumn
+    Friend WithEvents chkRecordedSales As CheckBox
+    Friend WithEvents chkNaive As CheckBox
+    Friend WithEvents chkMovingWeight As CheckBox
+    Friend WithEvents chkExpoSmoothing As CheckBox
+    Friend WithEvents ViewByToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ByAllDataToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Last4WeeksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Last8WeeksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Last12WeeksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Last2WeeksToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -151,7 +151,7 @@
     <value>False</value>
   </metadata>
   <data name="OleDbUpdateCommand1.CommandText" xml:space="preserve">
-    <value>UPDATE `Sales` SET `sYear` = ?, `sWeek` = ?, `sDay` = ?, `sAmount` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `sYear` IS NULL) OR (`sYear` = ?)) AND ((? = 1 AND `sWeek` IS NULL) OR (`sWeek` = ?)) AND ((? = 1 AND `sDay` IS NULL) OR (`sDay` = ?)) AND ((? = 1 AND `sAmount` IS NULL) OR (`sAmount` = ?)))</value>
+    <value>UPDATE `Sales` SET `sYear` = ?, `sWeek` = ?, `sDay` = ?, `sAmount` = ?, `Naive` = ?, `MovingWeight` = ?, `ExpoSmoothing` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `sYear` IS NULL) OR (`sYear` = ?)) AND ((? = 1 AND `sWeek` IS NULL) OR (`sWeek` = ?)) AND ((? = 1 AND `sDay` IS NULL) OR (`sDay` = ?)) AND ((? = 1 AND `sAmount` IS NULL) OR (`sAmount` = ?)) AND ((? = 1 AND `Naive` IS NULL) OR (`Naive` = ?)) AND ((? = 1 AND `MovingWeight` IS NULL) OR (`MovingWeight` = ?)) AND ((? = 1 AND `ExpoSmoothing` IS NULL) OR (`ExpoSmoothing` = ?)))</value>
   </data>
   <metadata name="OleDbDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -163,12 +163,36 @@
     <value>False</value>
   </metadata>
   <data name="OleDbDeleteCommand1.CommandText" xml:space="preserve">
-    <value>DELETE FROM `Sales` WHERE ((`ID` = ?) AND ((? = 1 AND `sYear` IS NULL) OR (`sYear` = ?)) AND ((? = 1 AND `sWeek` IS NULL) OR (`sWeek` = ?)) AND ((? = 1 AND `sDay` IS NULL) OR (`sDay` = ?)) AND ((? = 1 AND `sAmount` IS NULL) OR (`sAmount` = ?)))</value>
+    <value>DELETE FROM `Sales` WHERE ((`ID` = ?) AND ((? = 1 AND `sYear` IS NULL) OR (`sYear` = ?)) AND ((? = 1 AND `sWeek` IS NULL) OR (`sWeek` = ?)) AND ((? = 1 AND `sDay` IS NULL) OR (`sDay` = ?)) AND ((? = 1 AND `sAmount` IS NULL) OR (`sAmount` = ?)) AND ((? = 1 AND `Naive` IS NULL) OR (`Naive` = ?)) AND ((? = 1 AND `MovingWeight` IS NULL) OR (`MovingWeight` = ?)) AND ((? = 1 AND `ExpoSmoothing` IS NULL) OR (`ExpoSmoothing` = ?)))</value>
   </data>
   <metadata name="OleDbDataAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>178, 17</value>
   </metadata>
   <metadata name="ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Naive.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ExpoSmoothing.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="MovingWeight.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="SalesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>329, 60</value>
+  </metadata>
+  <metadata name="ID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Naive.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ExpoSmoothing.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="MovingWeight.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="SalesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -177,7 +201,10 @@
   <metadata name="DataSet11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>203, 60</value>
   </metadata>
+  <metadata name="DataSet11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>203, 60</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>189</value>
+    <value>222</value>
   </metadata>
 </root>
