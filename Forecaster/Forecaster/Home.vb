@@ -13,6 +13,10 @@ Public Class frmForecaster
     End Sub
 
     Private Sub frmForecaster_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & My.Application.Info.DirectoryPath & "\ForecasterDB.mdb;Persist Security Info=True"
+        connString = connString.Replace("\bin", "")
+        connString = connString.Replace("\Debug", "")
+        OleDbConnection1.ConnectionString = connString
         chtPredictionChart.Width = Me.Width / (3 / 2)
         dgvSalesData.Left = Me.Width / (3 / 2)
         dgvSalesData.Width = Me.Width / 3

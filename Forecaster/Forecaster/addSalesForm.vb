@@ -5,6 +5,10 @@
     Private week As Integer
 
     Private Sub frmAddSales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & My.Application.Info.DirectoryPath & "\ForecasterDB.mdb;Persist Security Info=True"
+        connString = connString.Replace("\bin", "")
+        connString = connString.Replace("\Debug", "")
+        OleDbConnection1.ConnectionString = connString
         OleDbConnection1.Open()
         OleDbDataAdapter1.SelectCommand.Connection = OleDbConnection1
         OleDbDataAdapter1.SelectCommand.CommandText = "SELECT TOP 1 sYear FROM Sales ORDER BY sYear DESC"

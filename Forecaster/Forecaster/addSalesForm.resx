@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="OleDbDataAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>246, 146</value>
+    <value>257, 12</value>
   </metadata>
   <metadata name="OleDbDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
@@ -163,12 +163,12 @@
     <value>UPDATE `Sales` SET `sYear` = ?, `sWeek` = ?, `sDay` = ?, `sAmount` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `sYear` IS NULL) OR (`sYear` = ?)) AND ((? = 1 AND `sWeek` IS NULL) OR (`sWeek` = ?)) AND ((? = 1 AND `sDay` IS NULL) OR (`sDay` = ?)) AND ((? = 1 AND `sAmount` IS NULL) OR (`sAmount` = ?)))</value>
   </data>
   <metadata name="OleDbConnection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 189</value>
+    <value>56, 55</value>
   </metadata>
   <metadata name="DataSet11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>203, 189</value>
+    <value>350, 57</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>146</value>
+    <value>103</value>
   </metadata>
 </root>

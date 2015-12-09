@@ -37,3 +37,16 @@ C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forec
 C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.frmForecaster.resources
 C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.Resources.resources
 C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.vbproj.GenerateResource.Cache
+G:\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.exe.config
+G:\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.exe
+G:\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.xml
+G:\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.pdb
+G:\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\ForecasterDB.mdb
+G:\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.exe
+G:\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.pdb
+G:\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.xml
+G:\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.vbprojResolveAssemblyReference.cache
+G:\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.frmAddSales.resources
+G:\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.frmForecaster.resources
+G:\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.Resources.resources
+G:\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.vbproj.GenerateResource.Cache

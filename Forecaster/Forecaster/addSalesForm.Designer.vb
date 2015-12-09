@@ -24,7 +24,7 @@ Partial Class frmAddSales
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAddSales))
         Me.lblWeekNum = New System.Windows.Forms.Label()
-        Me.lblAmount = New System.Windows.Forms.Label()
+        Me.lblAmountMonday = New System.Windows.Forms.Label()
         Me.txtAmtM = New System.Windows.Forms.TextBox()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.OleDbDataAdapter1 = New System.Data.OleDb.OleDbDataAdapter()
@@ -33,25 +33,25 @@ Partial Class frmAddSales
         Me.OleDbSelectCommand1 = New System.Data.OleDb.OleDbCommand()
         Me.OleDbUpdateCommand1 = New System.Data.OleDb.OleDbCommand()
         Me.OleDbConnection1 = New System.Data.OleDb.OleDbConnection()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblTitleMonday = New System.Windows.Forms.Label()
+        Me.lblTitleTuesday = New System.Windows.Forms.Label()
         Me.txtAmtT = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblAmountTuesday = New System.Windows.Forms.Label()
+        Me.lblTitleWednesday = New System.Windows.Forms.Label()
         Me.txtAmtW = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblAmountWednesday = New System.Windows.Forms.Label()
+        Me.lblTitleThursday = New System.Windows.Forms.Label()
         Me.txtAmtR = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lblAmountThursday = New System.Windows.Forms.Label()
+        Me.lblTitleFriday = New System.Windows.Forms.Label()
         Me.txtAmtF = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblAmountFriday = New System.Windows.Forms.Label()
+        Me.lblTitleSaturday = New System.Windows.Forms.Label()
         Me.txtAmtS = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblAmountSaturday = New System.Windows.Forms.Label()
+        Me.lblTitleSunday = New System.Windows.Forms.Label()
         Me.txtAmtU = New System.Windows.Forms.TextBox()
-        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lblAmountSunday = New System.Windows.Forms.Label()
         Me.txtStartYear = New System.Windows.Forms.TextBox()
         Me.lblStartYear = New System.Windows.Forms.Label()
         Me.lblStartWeek = New System.Windows.Forms.Label()
@@ -72,35 +72,37 @@ Partial Class frmAddSales
         '
         Me.lblWeekNum.AutoSize = True
         Me.lblWeekNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWeekNum.Location = New System.Drawing.Point(339, 9)
+        Me.lblWeekNum.Location = New System.Drawing.Point(254, 7)
+        Me.lblWeekNum.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblWeekNum.Name = "lblWeekNum"
-        Me.lblWeekNum.Size = New System.Drawing.Size(86, 25)
+        Me.lblWeekNum.Size = New System.Drawing.Size(69, 20)
         Me.lblWeekNum.TabIndex = 0
         Me.lblWeekNum.Text = "Week #"
         '
-        'lblAmount
+        'lblAmountMonday
         '
-        Me.lblAmount.AutoSize = True
-        Me.lblAmount.Location = New System.Drawing.Point(24, 137)
-        Me.lblAmount.Name = "lblAmount"
-        Me.lblAmount.Size = New System.Drawing.Size(56, 17)
-        Me.lblAmount.TabIndex = 2
-        Me.lblAmount.Text = "Amount"
+        Me.lblAmountMonday.AutoSize = True
+        Me.lblAmountMonday.Location = New System.Drawing.Point(18, 111)
+        Me.lblAmountMonday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblAmountMonday.Name = "lblAmountMonday"
+        Me.lblAmountMonday.Size = New System.Drawing.Size(43, 13)
+        Me.lblAmountMonday.TabIndex = 2
+        Me.lblAmountMonday.Text = "Amount"
         '
         'txtAmtM
         '
-        Me.txtAmtM.Location = New System.Drawing.Point(27, 156)
-        Me.txtAmtM.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtAmtM.Location = New System.Drawing.Point(20, 127)
+        Me.txtAmtM.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtAmtM.Name = "txtAmtM"
-        Me.txtAmtM.Size = New System.Drawing.Size(100, 22)
+        Me.txtAmtM.Size = New System.Drawing.Size(76, 20)
         Me.txtAmtM.TabIndex = 0
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(412, 216)
+        Me.btnAdd.Location = New System.Drawing.Point(309, 176)
         Me.btnAdd.Margin = New System.Windows.Forms.Padding(0)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(133, 43)
+        Me.btnAdd.Size = New System.Drawing.Size(100, 35)
         Me.btnAdd.TabIndex = 7
         Me.btnAdd.Text = "Add Records"
         Me.btnAdd.UseVisualStyleBackColor = True
@@ -134,196 +136,210 @@ Partial Class frmAddSales
         '
         'OleDbConnection1
         '
-        Me.OleDbConnection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Andrew\Documents\GitHub\For" &
+        Me.OleDbConnection1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Andrew\Documents\GitHub\For" & _
     "ecaster\Forecaster\Forecaster\ForecasterDB.mdb"
         '
-        'Label2
+        'lblTitleMonday
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(35, 100)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(83, 25)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Monday"
+        Me.lblTitleMonday.AutoSize = True
+        Me.lblTitleMonday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitleMonday.Location = New System.Drawing.Point(26, 81)
+        Me.lblTitleMonday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTitleMonday.Name = "lblTitleMonday"
+        Me.lblTitleMonday.Size = New System.Drawing.Size(65, 20)
+        Me.lblTitleMonday.TabIndex = 7
+        Me.lblTitleMonday.Text = "Monday"
         '
-        'Label1
+        'lblTitleTuesday
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(171, 100)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(89, 25)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Tuesday"
+        Me.lblTitleTuesday.AutoSize = True
+        Me.lblTitleTuesday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitleTuesday.Location = New System.Drawing.Point(128, 81)
+        Me.lblTitleTuesday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTitleTuesday.Name = "lblTitleTuesday"
+        Me.lblTitleTuesday.Size = New System.Drawing.Size(69, 20)
+        Me.lblTitleTuesday.TabIndex = 10
+        Me.lblTitleTuesday.Text = "Tuesday"
         '
         'txtAmtT
         '
-        Me.txtAmtT.Location = New System.Drawing.Point(163, 156)
-        Me.txtAmtT.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtAmtT.Location = New System.Drawing.Point(122, 127)
+        Me.txtAmtT.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtAmtT.Name = "txtAmtT"
-        Me.txtAmtT.Size = New System.Drawing.Size(100, 22)
+        Me.txtAmtT.Size = New System.Drawing.Size(76, 20)
         Me.txtAmtT.TabIndex = 1
         '
-        'Label3
+        'lblAmountTuesday
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(160, 137)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(56, 17)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "Amount"
+        Me.lblAmountTuesday.AutoSize = True
+        Me.lblAmountTuesday.Location = New System.Drawing.Point(120, 111)
+        Me.lblAmountTuesday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblAmountTuesday.Name = "lblAmountTuesday"
+        Me.lblAmountTuesday.Size = New System.Drawing.Size(43, 13)
+        Me.lblAmountTuesday.TabIndex = 8
+        Me.lblAmountTuesday.Text = "Amount"
         '
-        'Label4
+        'lblTitleWednesday
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(290, 100)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(118, 25)
-        Me.Label4.TabIndex = 13
-        Me.Label4.Text = "Wednesday"
+        Me.lblTitleWednesday.AutoSize = True
+        Me.lblTitleWednesday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitleWednesday.Location = New System.Drawing.Point(218, 81)
+        Me.lblTitleWednesday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTitleWednesday.Name = "lblTitleWednesday"
+        Me.lblTitleWednesday.Size = New System.Drawing.Size(93, 20)
+        Me.lblTitleWednesday.TabIndex = 13
+        Me.lblTitleWednesday.Text = "Wednesday"
         '
         'txtAmtW
         '
-        Me.txtAmtW.Location = New System.Drawing.Point(295, 156)
-        Me.txtAmtW.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtAmtW.Location = New System.Drawing.Point(221, 127)
+        Me.txtAmtW.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtAmtW.Name = "txtAmtW"
-        Me.txtAmtW.Size = New System.Drawing.Size(100, 22)
+        Me.txtAmtW.Size = New System.Drawing.Size(76, 20)
         Me.txtAmtW.TabIndex = 2
         '
-        'Label5
+        'lblAmountWednesday
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(292, 137)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(56, 17)
-        Me.Label5.TabIndex = 11
-        Me.Label5.Text = "Amount"
+        Me.lblAmountWednesday.AutoSize = True
+        Me.lblAmountWednesday.Location = New System.Drawing.Point(219, 111)
+        Me.lblAmountWednesday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblAmountWednesday.Name = "lblAmountWednesday"
+        Me.lblAmountWednesday.Size = New System.Drawing.Size(43, 13)
+        Me.lblAmountWednesday.TabIndex = 11
+        Me.lblAmountWednesday.Text = "Amount"
         '
-        'Label6
+        'lblTitleThursday
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(426, 100)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(95, 25)
-        Me.Label6.TabIndex = 16
-        Me.Label6.Text = "Thursday"
+        Me.lblTitleThursday.AutoSize = True
+        Me.lblTitleThursday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitleThursday.Location = New System.Drawing.Point(320, 81)
+        Me.lblTitleThursday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTitleThursday.Name = "lblTitleThursday"
+        Me.lblTitleThursday.Size = New System.Drawing.Size(74, 20)
+        Me.lblTitleThursday.TabIndex = 16
+        Me.lblTitleThursday.Text = "Thursday"
         '
         'txtAmtR
         '
-        Me.txtAmtR.Location = New System.Drawing.Point(427, 156)
-        Me.txtAmtR.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtAmtR.Location = New System.Drawing.Point(320, 127)
+        Me.txtAmtR.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtAmtR.Name = "txtAmtR"
-        Me.txtAmtR.Size = New System.Drawing.Size(100, 22)
+        Me.txtAmtR.Size = New System.Drawing.Size(76, 20)
         Me.txtAmtR.TabIndex = 3
         '
-        'Label7
+        'lblAmountThursday
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(424, 137)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(56, 17)
-        Me.Label7.TabIndex = 14
-        Me.Label7.Text = "Amount"
+        Me.lblAmountThursday.AutoSize = True
+        Me.lblAmountThursday.Location = New System.Drawing.Point(318, 111)
+        Me.lblAmountThursday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblAmountThursday.Name = "lblAmountThursday"
+        Me.lblAmountThursday.Size = New System.Drawing.Size(43, 13)
+        Me.lblAmountThursday.TabIndex = 14
+        Me.lblAmountThursday.Text = "Amount"
         '
-        'Label8
+        'lblTitleFriday
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(573, 100)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(66, 25)
-        Me.Label8.TabIndex = 19
-        Me.Label8.Text = "Friday"
+        Me.lblTitleFriday.AutoSize = True
+        Me.lblTitleFriday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitleFriday.Location = New System.Drawing.Point(430, 81)
+        Me.lblTitleFriday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTitleFriday.Name = "lblTitleFriday"
+        Me.lblTitleFriday.Size = New System.Drawing.Size(52, 20)
+        Me.lblTitleFriday.TabIndex = 19
+        Me.lblTitleFriday.Text = "Friday"
         '
         'txtAmtF
         '
-        Me.txtAmtF.Location = New System.Drawing.Point(557, 156)
-        Me.txtAmtF.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtAmtF.Location = New System.Drawing.Point(418, 127)
+        Me.txtAmtF.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtAmtF.Name = "txtAmtF"
-        Me.txtAmtF.Size = New System.Drawing.Size(100, 22)
+        Me.txtAmtF.Size = New System.Drawing.Size(76, 20)
         Me.txtAmtF.TabIndex = 4
         '
-        'Label9
+        'lblAmountFriday
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(554, 137)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(56, 17)
-        Me.Label9.TabIndex = 17
-        Me.Label9.Text = "Amount"
+        Me.lblAmountFriday.AutoSize = True
+        Me.lblAmountFriday.Location = New System.Drawing.Point(416, 111)
+        Me.lblAmountFriday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblAmountFriday.Name = "lblAmountFriday"
+        Me.lblAmountFriday.Size = New System.Drawing.Size(43, 13)
+        Me.lblAmountFriday.TabIndex = 17
+        Me.lblAmountFriday.Text = "Amount"
         '
-        'Label10
+        'lblTitleSaturday
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(691, 100)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(91, 25)
-        Me.Label10.TabIndex = 22
-        Me.Label10.Text = "Saturday"
+        Me.lblTitleSaturday.AutoSize = True
+        Me.lblTitleSaturday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitleSaturday.Location = New System.Drawing.Point(518, 81)
+        Me.lblTitleSaturday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTitleSaturday.Name = "lblTitleSaturday"
+        Me.lblTitleSaturday.Size = New System.Drawing.Size(73, 20)
+        Me.lblTitleSaturday.TabIndex = 22
+        Me.lblTitleSaturday.Text = "Saturday"
         '
         'txtAmtS
         '
-        Me.txtAmtS.Location = New System.Drawing.Point(689, 156)
-        Me.txtAmtS.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtAmtS.Location = New System.Drawing.Point(517, 127)
+        Me.txtAmtS.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtAmtS.Name = "txtAmtS"
-        Me.txtAmtS.Size = New System.Drawing.Size(100, 22)
+        Me.txtAmtS.Size = New System.Drawing.Size(76, 20)
         Me.txtAmtS.TabIndex = 5
         '
-        'Label11
+        'lblAmountSaturday
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(686, 137)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(56, 17)
-        Me.Label11.TabIndex = 20
-        Me.Label11.Text = "Amount"
+        Me.lblAmountSaturday.AutoSize = True
+        Me.lblAmountSaturday.Location = New System.Drawing.Point(514, 111)
+        Me.lblAmountSaturday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblAmountSaturday.Name = "lblAmountSaturday"
+        Me.lblAmountSaturday.Size = New System.Drawing.Size(43, 13)
+        Me.lblAmountSaturday.TabIndex = 20
+        Me.lblAmountSaturday.Text = "Amount"
         '
-        'Label12
+        'lblTitleSunday
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(822, 100)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(80, 25)
-        Me.Label12.TabIndex = 25
-        Me.Label12.Text = "Sunday"
+        Me.lblTitleSunday.AutoSize = True
+        Me.lblTitleSunday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitleSunday.Location = New System.Drawing.Point(616, 81)
+        Me.lblTitleSunday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblTitleSunday.Name = "lblTitleSunday"
+        Me.lblTitleSunday.Size = New System.Drawing.Size(63, 20)
+        Me.lblTitleSunday.TabIndex = 25
+        Me.lblTitleSunday.Text = "Sunday"
         '
         'txtAmtU
         '
-        Me.txtAmtU.Location = New System.Drawing.Point(814, 156)
-        Me.txtAmtU.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtAmtU.Location = New System.Drawing.Point(610, 127)
+        Me.txtAmtU.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtAmtU.Name = "txtAmtU"
-        Me.txtAmtU.Size = New System.Drawing.Size(100, 22)
+        Me.txtAmtU.Size = New System.Drawing.Size(76, 20)
         Me.txtAmtU.TabIndex = 6
         '
-        'Label13
+        'lblAmountSunday
         '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(811, 137)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(56, 17)
-        Me.Label13.TabIndex = 23
-        Me.Label13.Text = "Amount"
+        Me.lblAmountSunday.AutoSize = True
+        Me.lblAmountSunday.Location = New System.Drawing.Point(608, 111)
+        Me.lblAmountSunday.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblAmountSunday.Name = "lblAmountSunday"
+        Me.lblAmountSunday.Size = New System.Drawing.Size(43, 13)
+        Me.lblAmountSunday.TabIndex = 23
+        Me.lblAmountSunday.Text = "Amount"
         '
         'txtStartYear
         '
-        Me.txtStartYear.Location = New System.Drawing.Point(314, 42)
-        Me.txtStartYear.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtStartYear.Location = New System.Drawing.Point(236, 34)
+        Me.txtStartYear.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtStartYear.Name = "txtStartYear"
-        Me.txtStartYear.Size = New System.Drawing.Size(100, 22)
+        Me.txtStartYear.Size = New System.Drawing.Size(76, 20)
         Me.txtStartYear.TabIndex = 26
         Me.txtStartYear.Visible = False
         '
         'lblStartYear
         '
         Me.lblStartYear.AutoSize = True
-        Me.lblStartYear.Location = New System.Drawing.Point(242, 45)
+        Me.lblStartYear.Location = New System.Drawing.Point(182, 37)
+        Me.lblStartYear.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblStartYear.Name = "lblStartYear"
-        Me.lblStartYear.Size = New System.Drawing.Size(72, 17)
+        Me.lblStartYear.Size = New System.Drawing.Size(54, 13)
         Me.lblStartYear.TabIndex = 27
         Me.lblStartYear.Text = "Start Year"
         Me.lblStartYear.Visible = False
@@ -331,28 +347,29 @@ Partial Class frmAddSales
         'lblStartWeek
         '
         Me.lblStartWeek.AutoSize = True
-        Me.lblStartWeek.Location = New System.Drawing.Point(428, 45)
+        Me.lblStartWeek.Location = New System.Drawing.Point(321, 37)
+        Me.lblStartWeek.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblStartWeek.Name = "lblStartWeek"
-        Me.lblStartWeek.Size = New System.Drawing.Size(78, 17)
+        Me.lblStartWeek.Size = New System.Drawing.Size(61, 13)
         Me.lblStartWeek.TabIndex = 29
         Me.lblStartWeek.Text = "Start Week"
         Me.lblStartWeek.Visible = False
         '
         'txtStartWeek
         '
-        Me.txtStartWeek.Location = New System.Drawing.Point(509, 42)
-        Me.txtStartWeek.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.txtStartWeek.Location = New System.Drawing.Point(382, 34)
+        Me.txtStartWeek.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtStartWeek.Name = "txtStartWeek"
-        Me.txtStartWeek.Size = New System.Drawing.Size(100, 22)
+        Me.txtStartWeek.Size = New System.Drawing.Size(76, 20)
         Me.txtStartWeek.TabIndex = 28
         Me.txtStartWeek.Visible = False
         '
         'btnSetStart
         '
-        Me.btnSetStart.Location = New System.Drawing.Point(612, 36)
+        Me.btnSetStart.Location = New System.Drawing.Point(459, 29)
         Me.btnSetStart.Margin = New System.Windows.Forms.Padding(0)
         Me.btnSetStart.Name = "btnSetStart"
-        Me.btnSetStart.Size = New System.Drawing.Size(133, 30)
+        Me.btnSetStart.Size = New System.Drawing.Size(100, 24)
         Me.btnSetStart.TabIndex = 30
         Me.btnSetStart.Text = "Set Start Date"
         Me.btnSetStart.UseVisualStyleBackColor = True
@@ -363,9 +380,10 @@ Partial Class frmAddSales
         Me.lblDateM.AutoSize = True
         Me.lblDateM.BackColor = System.Drawing.Color.Transparent
         Me.lblDateM.Font = New System.Drawing.Font("Palatino Linotype", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDateM.Location = New System.Drawing.Point(37, 84)
+        Me.lblDateM.Location = New System.Drawing.Point(28, 68)
+        Me.lblDateM.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDateM.Name = "lblDateM"
-        Me.lblDateM.Size = New System.Drawing.Size(73, 19)
+        Me.lblDateM.Size = New System.Drawing.Size(64, 16)
         Me.lblDateM.TabIndex = 31
         Me.lblDateM.Text = "00/00/0000"
         '
@@ -374,9 +392,10 @@ Partial Class frmAddSales
         Me.lblDateT.AutoSize = True
         Me.lblDateT.BackColor = System.Drawing.Color.Transparent
         Me.lblDateT.Font = New System.Drawing.Font("Palatino Linotype", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDateT.Location = New System.Drawing.Point(173, 84)
+        Me.lblDateT.Location = New System.Drawing.Point(130, 68)
+        Me.lblDateT.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDateT.Name = "lblDateT"
-        Me.lblDateT.Size = New System.Drawing.Size(73, 19)
+        Me.lblDateT.Size = New System.Drawing.Size(64, 16)
         Me.lblDateT.TabIndex = 32
         Me.lblDateT.Text = "00/00/0000"
         '
@@ -385,9 +404,10 @@ Partial Class frmAddSales
         Me.lblDateW.AutoSize = True
         Me.lblDateW.BackColor = System.Drawing.Color.Transparent
         Me.lblDateW.Font = New System.Drawing.Font("Palatino Linotype", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDateW.Location = New System.Drawing.Point(292, 84)
+        Me.lblDateW.Location = New System.Drawing.Point(219, 68)
+        Me.lblDateW.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDateW.Name = "lblDateW"
-        Me.lblDateW.Size = New System.Drawing.Size(73, 19)
+        Me.lblDateW.Size = New System.Drawing.Size(64, 16)
         Me.lblDateW.TabIndex = 33
         Me.lblDateW.Text = "00/00/0000"
         '
@@ -396,9 +416,10 @@ Partial Class frmAddSales
         Me.lblDateR.AutoSize = True
         Me.lblDateR.BackColor = System.Drawing.Color.Transparent
         Me.lblDateR.Font = New System.Drawing.Font("Palatino Linotype", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDateR.Location = New System.Drawing.Point(428, 84)
+        Me.lblDateR.Location = New System.Drawing.Point(321, 68)
+        Me.lblDateR.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDateR.Name = "lblDateR"
-        Me.lblDateR.Size = New System.Drawing.Size(73, 19)
+        Me.lblDateR.Size = New System.Drawing.Size(64, 16)
         Me.lblDateR.TabIndex = 34
         Me.lblDateR.Text = "00/00/0000"
         '
@@ -407,9 +428,10 @@ Partial Class frmAddSales
         Me.lblDateF.AutoSize = True
         Me.lblDateF.BackColor = System.Drawing.Color.Transparent
         Me.lblDateF.Font = New System.Drawing.Font("Palatino Linotype", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDateF.Location = New System.Drawing.Point(575, 84)
+        Me.lblDateF.Location = New System.Drawing.Point(431, 68)
+        Me.lblDateF.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDateF.Name = "lblDateF"
-        Me.lblDateF.Size = New System.Drawing.Size(73, 19)
+        Me.lblDateF.Size = New System.Drawing.Size(64, 16)
         Me.lblDateF.TabIndex = 35
         Me.lblDateF.Text = "00/00/0000"
         '
@@ -418,9 +440,10 @@ Partial Class frmAddSales
         Me.lblDateS.AutoSize = True
         Me.lblDateS.BackColor = System.Drawing.Color.Transparent
         Me.lblDateS.Font = New System.Drawing.Font("Palatino Linotype", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDateS.Location = New System.Drawing.Point(693, 84)
+        Me.lblDateS.Location = New System.Drawing.Point(520, 68)
+        Me.lblDateS.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDateS.Name = "lblDateS"
-        Me.lblDateS.Size = New System.Drawing.Size(73, 19)
+        Me.lblDateS.Size = New System.Drawing.Size(64, 16)
         Me.lblDateS.TabIndex = 36
         Me.lblDateS.Text = "00/00/0000"
         '
@@ -429,9 +452,10 @@ Partial Class frmAddSales
         Me.lblDateU.AutoSize = True
         Me.lblDateU.BackColor = System.Drawing.Color.Transparent
         Me.lblDateU.Font = New System.Drawing.Font("Palatino Linotype", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDateU.Location = New System.Drawing.Point(824, 84)
+        Me.lblDateU.Location = New System.Drawing.Point(618, 68)
+        Me.lblDateU.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblDateU.Name = "lblDateU"
-        Me.lblDateU.Size = New System.Drawing.Size(73, 19)
+        Me.lblDateU.Size = New System.Drawing.Size(64, 16)
         Me.lblDateU.TabIndex = 37
         Me.lblDateU.Text = "00/00/0000"
         '
@@ -442,9 +466,9 @@ Partial Class frmAddSales
         '
         'frmAddSales
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(960, 318)
+        Me.ClientSize = New System.Drawing.Size(720, 258)
         Me.Controls.Add(Me.lblDateU)
         Me.Controls.Add(Me.lblDateS)
         Me.Controls.Add(Me.lblDateF)
@@ -457,30 +481,30 @@ Partial Class frmAddSales
         Me.Controls.Add(Me.txtStartWeek)
         Me.Controls.Add(Me.lblStartYear)
         Me.Controls.Add(Me.txtStartYear)
-        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.lblTitleSunday)
         Me.Controls.Add(Me.txtAmtU)
-        Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.lblAmountSunday)
+        Me.Controls.Add(Me.lblTitleSaturday)
         Me.Controls.Add(Me.txtAmtS)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.lblAmountSaturday)
+        Me.Controls.Add(Me.lblTitleFriday)
         Me.Controls.Add(Me.txtAmtF)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.lblAmountFriday)
+        Me.Controls.Add(Me.lblTitleThursday)
         Me.Controls.Add(Me.txtAmtR)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.lblAmountThursday)
+        Me.Controls.Add(Me.lblTitleWednesday)
         Me.Controls.Add(Me.txtAmtW)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblAmountWednesday)
+        Me.Controls.Add(Me.lblTitleTuesday)
         Me.Controls.Add(Me.txtAmtT)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.lblAmountTuesday)
+        Me.Controls.Add(Me.lblTitleMonday)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.txtAmtM)
-        Me.Controls.Add(Me.lblAmount)
+        Me.Controls.Add(Me.lblAmountMonday)
         Me.Controls.Add(Me.lblWeekNum)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "frmAddSales"
         Me.Text = "Add Sales"
         CType(Me.DataSet11, System.ComponentModel.ISupportInitialize).EndInit()
@@ -490,7 +514,7 @@ Partial Class frmAddSales
     End Sub
 
     Friend WithEvents lblWeekNum As Label
-    Friend WithEvents lblAmount As Label
+    Friend WithEvents lblAmountMonday As Label
     Friend WithEvents txtAmtM As TextBox
     Friend WithEvents btnAdd As Button
     Friend WithEvents OleDbDataAdapter1 As OleDb.OleDbDataAdapter
@@ -500,25 +524,25 @@ Partial Class frmAddSales
     Friend WithEvents OleDbUpdateCommand1 As OleDb.OleDbCommand
     Friend WithEvents OleDbConnection1 As OleDb.OleDbConnection
     Friend WithEvents DataSet11 As DataSet1
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblTitleMonday As Label
+    Friend WithEvents lblTitleTuesday As Label
     Friend WithEvents txtAmtT As TextBox
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
+    Friend WithEvents lblAmountTuesday As Label
+    Friend WithEvents lblTitleWednesday As Label
     Friend WithEvents txtAmtW As TextBox
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
+    Friend WithEvents lblAmountWednesday As Label
+    Friend WithEvents lblTitleThursday As Label
     Friend WithEvents txtAmtR As TextBox
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
+    Friend WithEvents lblAmountThursday As Label
+    Friend WithEvents lblTitleFriday As Label
     Friend WithEvents txtAmtF As TextBox
-    Friend WithEvents Label9 As Label
-    Friend WithEvents Label10 As Label
+    Friend WithEvents lblAmountFriday As Label
+    Friend WithEvents lblTitleSaturday As Label
     Friend WithEvents txtAmtS As TextBox
-    Friend WithEvents Label11 As Label
-    Friend WithEvents Label12 As Label
+    Friend WithEvents lblAmountSaturday As Label
+    Friend WithEvents lblTitleSunday As Label
     Friend WithEvents txtAmtU As TextBox
-    Friend WithEvents Label13 As Label
+    Friend WithEvents lblAmountSunday As Label
     Friend WithEvents txtStartYear As TextBox
     Friend WithEvents lblStartYear As Label
     Friend WithEvents lblStartWeek As Label
