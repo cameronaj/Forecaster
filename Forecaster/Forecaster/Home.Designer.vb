@@ -24,23 +24,28 @@ Partial Class frmForecaster
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmForecaster))
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series10 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series11 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series12 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.mnuMainMenu = New System.Windows.Forms.MenuStrip()
         Me.DataOptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearSavedDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewByToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ByAllDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Last2WeeksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Last4WeeksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Last8WeeksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Last12WeeksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ByAllDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddSalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ForecastAccuracyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NaiveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExponentialSmoothingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MovingWeighedAverageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RefeashDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OleDbSelectCommand1 = New System.Data.OleDb.OleDbCommand()
         Me.OleDbConnection1 = New System.Data.OleDb.OleDbConnection()
         Me.OleDbInsertCommand1 = New System.Data.OleDb.OleDbCommand()
@@ -63,6 +68,7 @@ Partial Class frmForecaster
         Me.chkNaive = New System.Windows.Forms.CheckBox()
         Me.chkMovingWeight = New System.Windows.Forms.CheckBox()
         Me.chkExpoSmoothing = New System.Windows.Forms.CheckBox()
+        Me.ImportFromExcelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMainMenu.SuspendLayout()
         CType(Me.chtPredictionChart, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvSalesData, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,7 +79,7 @@ Partial Class frmForecaster
         'mnuMainMenu
         '
         Me.mnuMainMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataOptionsToolStripMenuItem, Me.ViewByToolStripMenuItem, Me.AddSalesToolStripMenuItem})
+        Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewByToolStripMenuItem, Me.ForecastAccuracyToolStripMenuItem, Me.AddSalesToolStripMenuItem, Me.ImportFromExcelToolStripMenuItem, Me.RefeashDataToolStripMenuItem, Me.DataOptionsToolStripMenuItem})
         Me.mnuMainMenu.Location = New System.Drawing.Point(0, 0)
         Me.mnuMainMenu.Name = "mnuMainMenu"
         Me.mnuMainMenu.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
@@ -102,48 +108,82 @@ Partial Class frmForecaster
         '
         'ViewByToolStripMenuItem
         '
-        Me.ViewByToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ByAllDataToolStripMenuItem, Me.Last2WeeksToolStripMenuItem, Me.Last4WeeksToolStripMenuItem, Me.Last8WeeksToolStripMenuItem, Me.Last12WeeksToolStripMenuItem})
+        Me.ViewByToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Last2WeeksToolStripMenuItem, Me.Last4WeeksToolStripMenuItem, Me.Last8WeeksToolStripMenuItem, Me.Last12WeeksToolStripMenuItem, Me.ByAllDataToolStripMenuItem})
         Me.ViewByToolStripMenuItem.Name = "ViewByToolStripMenuItem"
         Me.ViewByToolStripMenuItem.Size = New System.Drawing.Size(53, 24)
         Me.ViewByToolStripMenuItem.Text = "View"
         '
-        'ByAllDataToolStripMenuItem
-        '
-        Me.ByAllDataToolStripMenuItem.Checked = True
-        Me.ByAllDataToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.ByAllDataToolStripMenuItem.Name = "ByAllDataToolStripMenuItem"
-        Me.ByAllDataToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
-        Me.ByAllDataToolStripMenuItem.Text = "All Data"
-        '
         'Last2WeeksToolStripMenuItem
         '
+        Me.Last2WeeksToolStripMenuItem.Checked = True
+        Me.Last2WeeksToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.Last2WeeksToolStripMenuItem.Name = "Last2WeeksToolStripMenuItem"
-        Me.Last2WeeksToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.Last2WeeksToolStripMenuItem.Size = New System.Drawing.Size(176, 26)
         Me.Last2WeeksToolStripMenuItem.Text = "Last 2 Weeks"
         '
         'Last4WeeksToolStripMenuItem
         '
         Me.Last4WeeksToolStripMenuItem.Name = "Last4WeeksToolStripMenuItem"
-        Me.Last4WeeksToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.Last4WeeksToolStripMenuItem.Size = New System.Drawing.Size(176, 26)
         Me.Last4WeeksToolStripMenuItem.Text = "Last 4 Weeks"
         '
         'Last8WeeksToolStripMenuItem
         '
         Me.Last8WeeksToolStripMenuItem.Name = "Last8WeeksToolStripMenuItem"
-        Me.Last8WeeksToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.Last8WeeksToolStripMenuItem.Size = New System.Drawing.Size(176, 26)
         Me.Last8WeeksToolStripMenuItem.Text = "Last 8 Weeks"
         '
         'Last12WeeksToolStripMenuItem
         '
         Me.Last12WeeksToolStripMenuItem.Name = "Last12WeeksToolStripMenuItem"
-        Me.Last12WeeksToolStripMenuItem.Size = New System.Drawing.Size(181, 26)
+        Me.Last12WeeksToolStripMenuItem.Size = New System.Drawing.Size(176, 26)
         Me.Last12WeeksToolStripMenuItem.Text = "Last 12 Weeks"
+        '
+        'ByAllDataToolStripMenuItem
+        '
+        Me.ByAllDataToolStripMenuItem.Name = "ByAllDataToolStripMenuItem"
+        Me.ByAllDataToolStripMenuItem.Size = New System.Drawing.Size(176, 26)
+        Me.ByAllDataToolStripMenuItem.Text = "All Data"
         '
         'AddSalesToolStripMenuItem
         '
         Me.AddSalesToolStripMenuItem.Name = "AddSalesToolStripMenuItem"
         Me.AddSalesToolStripMenuItem.Size = New System.Drawing.Size(87, 24)
         Me.AddSalesToolStripMenuItem.Text = "Add Sales"
+        '
+        'ForecastAccuracyToolStripMenuItem
+        '
+        Me.ForecastAccuracyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NaiveToolStripMenuItem, Me.ExponentialSmoothingToolStripMenuItem, Me.MovingWeighedAverageToolStripMenuItem})
+        Me.ForecastAccuracyToolStripMenuItem.Name = "ForecastAccuracyToolStripMenuItem"
+        Me.ForecastAccuracyToolStripMenuItem.Size = New System.Drawing.Size(139, 24)
+        Me.ForecastAccuracyToolStripMenuItem.Text = "Forecast Accuracy"
+        '
+        'NaiveToolStripMenuItem
+        '
+        Me.NaiveToolStripMenuItem.Enabled = False
+        Me.NaiveToolStripMenuItem.Name = "NaiveToolStripMenuItem"
+        Me.NaiveToolStripMenuItem.Size = New System.Drawing.Size(256, 26)
+        Me.NaiveToolStripMenuItem.Text = "Naive"
+        '
+        'ExponentialSmoothingToolStripMenuItem
+        '
+        Me.ExponentialSmoothingToolStripMenuItem.Enabled = False
+        Me.ExponentialSmoothingToolStripMenuItem.Name = "ExponentialSmoothingToolStripMenuItem"
+        Me.ExponentialSmoothingToolStripMenuItem.Size = New System.Drawing.Size(256, 26)
+        Me.ExponentialSmoothingToolStripMenuItem.Text = "Exponential Smoothing"
+        '
+        'MovingWeighedAverageToolStripMenuItem
+        '
+        Me.MovingWeighedAverageToolStripMenuItem.Enabled = False
+        Me.MovingWeighedAverageToolStripMenuItem.Name = "MovingWeighedAverageToolStripMenuItem"
+        Me.MovingWeighedAverageToolStripMenuItem.Size = New System.Drawing.Size(256, 26)
+        Me.MovingWeighedAverageToolStripMenuItem.Text = "Moving Weighed Average"
+        '
+        'RefeashDataToolStripMenuItem
+        '
+        Me.RefeashDataToolStripMenuItem.Name = "RefeashDataToolStripMenuItem"
+        Me.RefeashDataToolStripMenuItem.Size = New System.Drawing.Size(106, 24)
+        Me.RefeashDataToolStripMenuItem.Text = "Refresh Data"
         '
         'OleDbSelectCommand1
         '
@@ -185,67 +225,68 @@ Partial Class frmForecaster
         '
         'chtPredictionChart
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.chtPredictionChart.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.chtPredictionChart.Legends.Add(Legend2)
+        Me.chtPredictionChart.Anchor = System.Windows.Forms.AnchorStyles.Left
+        ChartArea3.Name = "ChartArea1"
+        Me.chtPredictionChart.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Me.chtPredictionChart.Legends.Add(Legend3)
         Me.chtPredictionChart.Location = New System.Drawing.Point(0, 42)
         Me.chtPredictionChart.Margin = New System.Windows.Forms.Padding(0)
         Me.chtPredictionChart.Name = "chtPredictionChart"
         Me.chtPredictionChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright
-        Series5.BorderWidth = 5
-        Series5.ChartArea = "ChartArea1"
-        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series5.Color = System.Drawing.Color.Purple
-        Series5.Legend = "Legend1"
-        Series5.MarkerColor = System.Drawing.Color.White
-        Series5.MarkerSize = 1
-        Series5.Name = "Niave"
-        Series5.SmartLabelStyle.MaxMovingDistance = 75.0R
-        Series6.BorderWidth = 4
-        Series6.ChartArea = "ChartArea1"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series6.Color = System.Drawing.Color.Crimson
-        Series6.Legend = "Legend1"
-        Series6.MarkerBorderWidth = 4
-        Series6.MarkerColor = System.Drawing.Color.Gold
-        Series6.MarkerSize = 10
-        Series6.MarkerStep = 2
-        Series6.Name = "ES"
-        Series7.BorderWidth = 3
-        Series7.ChartArea = "ChartArea1"
-        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series7.Color = System.Drawing.Color.RoyalBlue
-        Series7.Legend = "Legend1"
-        Series7.MarkerBorderWidth = 4
-        Series7.MarkerColor = System.Drawing.Color.Gold
-        Series7.MarkerSize = 10
-        Series7.MarkerStep = 2
-        Series7.Name = "MVA"
-        Series8.BorderWidth = 2
-        Series8.ChartArea = "ChartArea1"
-        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series8.Color = System.Drawing.Color.Lime
-        Series8.IsValueShownAsLabel = True
-        Series8.Legend = "Legend1"
-        Series8.MarkerBorderWidth = 4
-        Series8.MarkerColor = System.Drawing.Color.Gold
-        Series8.MarkerSize = 10
-        Series8.MarkerStep = 2
-        Series8.Name = "Sales"
-        Series8.YValuesPerPoint = 4
-        Me.chtPredictionChart.Series.Add(Series5)
-        Me.chtPredictionChart.Series.Add(Series6)
-        Me.chtPredictionChart.Series.Add(Series7)
-        Me.chtPredictionChart.Series.Add(Series8)
+        Series9.BorderWidth = 5
+        Series9.ChartArea = "ChartArea1"
+        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series9.Color = System.Drawing.Color.Purple
+        Series9.Legend = "Legend1"
+        Series9.MarkerColor = System.Drawing.Color.White
+        Series9.MarkerSize = 1
+        Series9.Name = "Niave"
+        Series9.SmartLabelStyle.MaxMovingDistance = 75.0R
+        Series10.BorderWidth = 4
+        Series10.ChartArea = "ChartArea1"
+        Series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series10.Color = System.Drawing.Color.Crimson
+        Series10.Legend = "Legend1"
+        Series10.MarkerBorderWidth = 4
+        Series10.MarkerColor = System.Drawing.Color.Gold
+        Series10.MarkerSize = 10
+        Series10.MarkerStep = 2
+        Series10.Name = "ES"
+        Series11.BorderWidth = 3
+        Series11.ChartArea = "ChartArea1"
+        Series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series11.Color = System.Drawing.Color.RoyalBlue
+        Series11.Legend = "Legend1"
+        Series11.MarkerBorderWidth = 4
+        Series11.MarkerColor = System.Drawing.Color.Gold
+        Series11.MarkerSize = 10
+        Series11.MarkerStep = 2
+        Series11.Name = "MVA"
+        Series12.BorderWidth = 2
+        Series12.ChartArea = "ChartArea1"
+        Series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series12.Color = System.Drawing.Color.Lime
+        Series12.Legend = "Legend1"
+        Series12.MarkerBorderWidth = 4
+        Series12.MarkerColor = System.Drawing.Color.Gold
+        Series12.MarkerSize = 10
+        Series12.MarkerStep = 2
+        Series12.Name = "Sales"
+        Series12.YValuesPerPoint = 4
+        Me.chtPredictionChart.Series.Add(Series9)
+        Me.chtPredictionChart.Series.Add(Series10)
+        Me.chtPredictionChart.Series.Add(Series11)
+        Me.chtPredictionChart.Series.Add(Series12)
         Me.chtPredictionChart.Size = New System.Drawing.Size(719, 725)
         Me.chtPredictionChart.TabIndex = 1
-        Me.chtPredictionChart.Text = "Prediction Chart"
+        Me.chtPredictionChart.Text = " "
         '
         'dgvSalesData
         '
         Me.dgvSalesData.AllowUserToAddRows = False
         Me.dgvSalesData.AllowUserToDeleteRows = False
+        Me.dgvSalesData.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.dgvSalesData.AutoGenerateColumns = False
         Me.dgvSalesData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvSalesData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.SYearDataGridViewTextBoxColumn, Me.SWeekDataGridViewTextBoxColumn, Me.SDayDataGridViewTextBoxColumn, Me.SAmountDataGridViewTextBoxColumn, Me.Naive, Me.ExpoSmoothing, Me.MovingWeight})
@@ -373,6 +414,12 @@ Partial Class frmForecaster
         Me.chkExpoSmoothing.Text = "Exponential Smoothing"
         Me.chkExpoSmoothing.UseVisualStyleBackColor = True
         '
+        'ImportFromExcelToolStripMenuItem
+        '
+        Me.ImportFromExcelToolStripMenuItem.Name = "ImportFromExcelToolStripMenuItem"
+        Me.ImportFromExcelToolStripMenuItem.Size = New System.Drawing.Size(140, 24)
+        Me.ImportFromExcelToolStripMenuItem.Text = "Import from Excel"
+        '
         'frmForecaster
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -389,6 +436,7 @@ Partial Class frmForecaster
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "frmForecaster"
         Me.Text = "Forecaster"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.mnuMainMenu.ResumeLayout(False)
         Me.mnuMainMenu.PerformLayout()
         CType(Me.chtPredictionChart, System.ComponentModel.ISupportInitialize).EndInit()
@@ -433,4 +481,10 @@ Partial Class frmForecaster
     Friend WithEvents Last8WeeksToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Last12WeeksToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Last2WeeksToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ForecastAccuracyToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NaiveToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExponentialSmoothingToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MovingWeighedAverageToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RefeashDataToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ImportFromExcelToolStripMenuItem As ToolStripMenuItem
 End Class

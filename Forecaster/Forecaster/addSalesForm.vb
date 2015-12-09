@@ -7,11 +7,12 @@
     Private Sub frmAddSales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         OleDbConnection1.Open()
         OleDbDataAdapter1.SelectCommand.Connection = OleDbConnection1
-        OleDbDataAdapter1.SelectCommand.CommandText = "SELECT LAST(sYear) FROM Sales"
+        OleDbDataAdapter1.SelectCommand.CommandText = "SELECT TOP 1 sYear FROM Sales ORDER BY sYear DESC"
         Dim latestyear = OleDbDataAdapter1.SelectCommand.ExecuteScalar()
-        OleDbDataAdapter1.SelectCommand.CommandText = "SELECT LAST(sWeek) FROM Sales"
+        OleDbDataAdapter1.SelectCommand.CommandText = "SELECT TOP 1 sWeek FROM Sales ORDER BY sYear DESC, sWeek DESC"
         Dim latestweek = OleDbDataAdapter1.SelectCommand.ExecuteScalar()
-        If IsDBNull(latestyear) Then
+
+        If IsDBNull(latestyear) Or String.IsNullOrEmpty(latestyear) Then
             isEmptyDB = True
             lblWeekNum.Text = "Select a starting year!"
             lblStartYear.Visible = True
@@ -76,7 +77,8 @@
         Next
         OleDbConnection1.Close()
         MsgBox(test & " Records were succesfully saved.")
-
+        clearAmounts()
+        Me.Close()
     End Sub
 
     Private Sub btnSetStart_Click(sender As Object, e As EventArgs) Handles btnSetStart.Click
@@ -139,24 +141,20 @@
 
     Private Function WeightedMoving(amount As Double, i As Integer) As Double
         OleDbDataAdapter1.SelectCommand.Connection = OleDbConnection1
-        Dim startDate = getDate(i).AddDays(-70)
-        Dim startweek = Math.Ceiling(Convert.ToDouble(startDate.DayOfYear) / 7)
-        OleDbDataAdapter1.SelectCommand.CommandText = "SELECT sAmount FROM Sales WHERE sYear = " & startDate.Year & " AND sWeek = " & startweek & " AND sDay = '" & getDayChar(i) & "'"
-
-        Dim val = OleDbDataAdapter1.SelectCommand.ExecuteScalar()
-        Dim N = 2
-        If IsDBNull(val) Then
-            Return 0
-        Else
-            For x As Integer = -63 To 0 Step 7
-                Dim incrementDate = getDate(i).AddDays(x)
-                Dim incrementWeek = Math.Ceiling(Convert.ToDouble(incrementDate.DayOfYear) / 7)
-                OleDbDataAdapter1.SelectCommand.CommandText = "SELECT sAmount FROM Sales WHERE sYear = " & incrementDate & " AND sWeek = " & incrementWeek & " AND sDay = '" & getDayChar(i) & "'"
-                val += OleDbDataAdapter1.SelectCommand.ExecuteScalar() * N
-                N += 1
-            Next
-            Return (val / (10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2))
-        End If
+        Dim val As Double = 0
+        Dim N = 1
+        For x As Integer = -70 To 0 Step 7
+            Dim incrementDate = getDate(i).AddDays(x)
+            Dim incrementWeek = Math.Ceiling(Convert.ToDouble(incrementDate.DayOfYear) / 7) + 1
+            OleDbDataAdapter1.SelectCommand.CommandText = "SELECT sAmount FROM Sales WHERE sYear = " & incrementDate.Year & " AND sWeek = " & incrementWeek & " AND sDay = '" & getDayChar(i) & "'"
+            Dim temp = OleDbDataAdapter1.SelectCommand.ExecuteScalar()
+            If IsDBNull(temp) Then
+                temp = 0
+            End If
+            val = val + (Convert.ToDouble(temp) * N)
+            N = N + 1
+        Next
+        Return (val / 55)
     End Function
 
     Private Function getDayChar(day As Integer) As String
@@ -207,5 +205,15 @@
                 End If
             End If
         Next
+    End Sub
+
+    Private Sub clearAmounts()
+        txtAmtM.Text = ""
+        txtAmtT.Text = ""
+        txtAmtW.Text = ""
+        txtAmtR.Text = ""
+        txtAmtF.Text = ""
+        txtAmtS.Text = ""
+        txtAmtU.Text = ""
     End Sub
 End Class

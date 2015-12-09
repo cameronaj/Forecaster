@@ -1075,8 +1075,8 @@ Namespace DataSet1TableAdapters
             Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, sYear, sWeek, sDay, sAmount, Naive, MovingWeight, ExpoSmoothing FROM S"& _ 
-                "ales"
+            Me._commandCollection(0).CommandText = "SELECT ID, sYear, sWeek, sDay, sAmount, Naive, MovingWeight, ExpoSmoothing"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM "& _ 
+                "    Sales"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY sYear, sWeek"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

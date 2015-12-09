@@ -47,8 +47,10 @@
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT ID, sYear, sWeek, sDay, sAmount, Naive, MovingWeight, ExpoSmoothing FROM Sales</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT ID, sYear, sWeek, sDay, sAmount, Naive, MovingWeight, ExpoSmoothing
+FROM     Sales
+ORDER BY sYear, sWeek</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -103,7 +105,7 @@
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Sales" msprop:Generator_TableClassName="SalesDataTable" msprop:Generator_TableVarName="tableSales" msprop:Generator_RowChangedName="SalesRowChanged" msprop:Generator_TablePropName="Sales" msprop:Generator_RowDeletingName="SalesRowDeleting" msprop:Generator_RowChangingName="SalesRowChanging" msprop:Generator_RowEvHandlerName="SalesRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesRowDeleted" msprop:Generator_RowClassName="SalesRow" msprop:Generator_UserTableName="Sales" msprop:Generator_RowEvArgName="SalesRowChangeEvent">
+        <xs:element name="Sales" msprop:Generator_TableClassName="SalesDataTable" msprop:Generator_TableVarName="tableSales" msprop:Generator_TablePropName="Sales" msprop:Generator_RowDeletingName="SalesRowDeleting" msprop:Generator_RowChangingName="SalesRowChanging" msprop:Generator_RowEvHandlerName="SalesRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesRowDeleted" msprop:Generator_UserTableName="Sales" msprop:Generator_RowChangedName="SalesRowChanged" msprop:Generator_RowEvArgName="SalesRowChangeEvent" msprop:Generator_RowClassName="SalesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
