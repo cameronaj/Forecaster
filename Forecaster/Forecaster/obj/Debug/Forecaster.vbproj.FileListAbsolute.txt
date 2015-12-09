@@ -24,3 +24,16 @@ C:\Users\Andrew\Documents\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Fore
 \\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.vbproj.GenerateResource.Cache
 C:\Users\Andrew\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.frmAddSales.resources
 \\ad.messiah.edu\files\students\kp1269\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.frmAddSales.resources
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.exe.config
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.exe
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.xml
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.pdb
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\ForecasterDB.mdb
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.exe
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.pdb
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\bin\Debug\Forecaster.xml
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.vbprojResolveAssemblyReference.cache
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.frmAddSales.resources
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.frmForecaster.resources
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.Resources.resources
+C:\Users\Emily\Documents\GitHub\Forecaster\Forecaster\Forecaster\obj\Debug\Forecaster.vbproj.GenerateResource.Cache

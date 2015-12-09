@@ -62,8 +62,7 @@
         'Add new data to database
         For i As Integer = 0 To weekData.Length - 1
             If isEmptyDB Then
-                OleDbDataAdapter1.InsertCommand.CommandText = "INSERT INTO Sales (sYear, sWeek, sDay, sAmount, Naive, MovingWeight, ExpoSmoothing) 
-                    VALUES (" & year & ", " & week & ", '" & getDayChar(i) & "', " & weekData(i) & ", " & weekData(i) & ", 0, " & weekData(i) & " )"
+                OleDbDataAdapter1.InsertCommand.CommandText = "INSERT INTO Sales (sYear, sWeek, sDay, sAmount, Naive, MovingWeight, ExpoSmoothing) VALUES (" & year & ", " & week & ", '" & getDayChar(i) & "', " & weekData(i) & ", " & weekData(i) & ", 0, " & weekData(i) & " )"
                 test += OleDbDataAdapter1.InsertCommand.ExecuteNonQuery()
             Else
                 OleDbDataAdapter1.UpdateCommand.CommandText = "UPDATE Sales SET sAmount = " & weekData(i) & " WHERE sYear = " & year & " AND sWeek = " & week & " AND sDay = '" & getDayChar(i) & "'"
@@ -71,8 +70,7 @@
             End If
         Next
         For i As Integer = 0 To weekData.Length - 1
-            OleDbDataAdapter1.InsertCommand.CommandText = "INSERT INTO Sales (sYear, sWeek, sDay, Naive, MovingWeight, ExpoSmoothing) 
-                    VALUES (" & year & ", " & week + 1 & ", '" & getDayChar(i) & "', " & weekData(i) & ", " & WeightedMoving(weekData(i), i) & ", " & ExponentialSmoothing(weekData(i), i) & " )"
+            OleDbDataAdapter1.InsertCommand.CommandText = "INSERT INTO Sales (sYear, sWeek, sDay, Naive, MovingWeight, ExpoSmoothing)  VALUES (" & year & ", " & week + 1 & ", '" & getDayChar(i) & "', " & weekData(i) & ", " & WeightedMoving(weekData(i), i) & ", " & ExponentialSmoothing(weekData(i), i) & " )"
             test += OleDbDataAdapter1.InsertCommand.ExecuteNonQuery()
         Next
         OleDbConnection1.Close()
