@@ -7,6 +7,8 @@ Public Class frmForecaster
 
     Private isLoaded As Boolean = False
     Private viewNum As Integer = 14
+    Private k As Integer = 0
+    Private temp As New PictureBox
 
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
         Close()
@@ -16,6 +18,16 @@ Public Class frmForecaster
         Dim connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & My.Application.Info.DirectoryPath & "\ForecasterDB.mdb;Persist Security Info=True"
         connString = connString.Replace("\bin", "")
         connString = connString.Replace("\Debug", "")
+        temp.Location = New Point(-25, Me.Height - 65)
+        Dim str = My.Application.Info.DirectoryPath
+        str = str.Replace("\bin", "")
+        str = str.Replace("\Debug", "")
+        str = str & "\My Project\tmp0.1.jpg"
+        temp.Image = Image.FromFile(str)
+        temp.Height = 25
+        temp.Width = 18
+        Controls.Add(temp)
+        temp.BringToFront()
         OleDbConnection1.ConnectionString = connString
         chtPredictionChart.Width = Me.Width / (3 / 2)
         dgvSalesData.Left = Me.Width / (3 / 2)
@@ -40,6 +52,7 @@ Public Class frmForecaster
     End Sub
 
     Private Sub AddSalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddSalesToolStripMenuItem.Click
+        tm.Enabled = True
         Dim dataEntryForm = New frmAddSales
         dataEntryForm.Show()
     End Sub
@@ -144,12 +157,20 @@ Public Class frmForecaster
         amount = OleDbDataAdapter1.SelectCommand.ExecuteScalar()
         OleDbDataAdapter1.SelectCommand.CommandText = "SELECT AVG(Naive) FROM Sales WHERE Naive > 0 AND sAmount > 0"
         naive = OleDbDataAdapter1.SelectCommand.ExecuteScalar()
-        NaiveToolStripMenuItem.Text = "Naive Accuracy: " & 100 - Math.Round(((Math.Abs(naive - amount) / amount) * 100), 2) & "%"
+        If IsDBNull(naive) Then
+            NaiveToolStripMenuItem.Text = "Not Enough Data For Naive"
+        Else
+            NaiveToolStripMenuItem.Text = "Naive Accuracy: " & 100 - Math.Round(((Math.Abs(naive - amount) / amount) * 100), 2) & "%"
+        End If
         OleDbDataAdapter1.SelectCommand.CommandText = "SELECT AVG(sAmount) FROM Sales WHERE sAmount > 0 AND ExpoSmoothing > 0"
         amount = OleDbDataAdapter1.SelectCommand.ExecuteScalar()
         OleDbDataAdapter1.SelectCommand.CommandText = "SELECT AVG(ExpoSmoothing) FROM Sales WHERE ExpoSmoothing > 0 AND sAmount > 0"
         es = OleDbDataAdapter1.SelectCommand.ExecuteScalar()
-        ExponentialSmoothingToolStripMenuItem.Text = "Exponential Smoothing Accuracy: " & 100 - Math.Round(((Math.Abs(es - amount) / amount) * 100), 2) & "%"
+        If IsDBNull(es) Then
+            ExponentialSmoothingToolStripMenuItem.Text = "Not Enough Data For Exponential Smoothing"
+        Else
+            ExponentialSmoothingToolStripMenuItem.Text = "Exponential Smoothing Accuracy: " & 100 - Math.Round(((Math.Abs(es - amount) / amount) * 100), 2) & "%"
+        End If
         OleDbDataAdapter1.SelectCommand.CommandText = "SELECT AVG(sAmount) FROM Sales WHERE sAmount > 0 AND MovingWeight > 0"
         amount = OleDbDataAdapter1.SelectCommand.ExecuteScalar()
         OleDbDataAdapter1.SelectCommand.CommandText = "SELECT AVG(MovingWeight) FROM Sales WHERE MovingWeight > 0 AND sAmount > 0"
@@ -186,5 +207,40 @@ Public Class frmForecaster
                 End Using
             End If
         End Using
+    End Sub
+
+    Private Sub tm_Tick(sender As Object, e As EventArgs) Handles tm.Tick
+        temp.BringToFront()
+        temp.Location = New Point(temp.Location.X + 25, temp.Location.Y)
+        If temp.Location.X > Me.Width Then
+            tm.Enabled = False
+            temp.Location = New Point(-18, temp.Location.Y)
+        End If
+    End Sub
+
+    Private Sub dgvSalesData_KeyDown(sender As Object, e As KeyEventArgs) Handles dgvSalesData.KeyDown
+        If e.KeyCode = Keys.Up And (k = 0 Or k = 1) Then
+            k = k + 1
+        ElseIf e.KeyCode = Keys.Down And (k = 2 Or k = 3) Then
+            k = k + 1
+        ElseIf e.KeyCode = Keys.Left And (k = 4 Or k = 6) Then
+            k = k + 1
+        ElseIf e.KeyCode = Keys.Right And (k = 5 Or k = 7) Then
+            k = k + 1
+        ElseIf e.KeyCode = Keys.A And k = 9 Then
+            k = k + 1
+        ElseIf e.KeyCode = Keys.B And k = 8 Then
+            k = k + 1
+        ElseIf e.KeyCode = Keys.Enter And k = 10 Then
+            k = 0
+            tmK.Enabled = Not tmK.Enabled
+        Else
+            k = 0
+        End If
+    End Sub
+
+    Private Sub tmK_Tick(sender As Object, e As EventArgs) Handles tmK.Tick
+        dgvSalesData.BackgroundColor = Color.FromArgb((Rnd() * 254) + 1, (Rnd() * 254) + 1, (Rnd() * 254) + 1)
+        chtPredictionChart.BackColor = Color.FromArgb((Rnd() * 254) + 1, (Rnd() * 254) + 1, (Rnd() * 254) + 1)
     End Sub
 End Class

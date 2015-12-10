@@ -86,7 +86,7 @@
     Private Sub btnSetStart_Click(sender As Object, e As EventArgs) Handles btnSetStart.Click
         If Not String.IsNullOrEmpty(txtStartWeek.Text) And Not String.IsNullOrEmpty(txtStartYear.Text) Then
             If IsNumeric(txtStartWeek.Text) And IsNumeric(txtStartYear.Text) Then
-                If CInt(txtStartYear.Text) <= Now().Year And CInt(txtStartWeek.Text) <= Math.Ceiling(Convert.ToDouble(Now().DayOfYear) / 7) Then
+                If CInt(txtStartYear.Text) <= Now().Year And CInt(txtStartYear.Text) >= 1800 And CInt(txtStartWeek.Text) > 0 And CInt(txtStartWeek.Text) <= Math.Ceiling(Convert.ToDouble(Now().DayOfYear) / 7) Then
                     lblWeekNum.Text = "Input for " & txtStartYear.Text & " Week " & txtStartWeek.Text
                     lblStartYear.Visible = False
                     lblStartWeek.Visible = False
@@ -104,6 +104,22 @@
                     year = txtStartYear.Text
                     week = txtStartWeek.Text
                     setDates(txtStartYear.Text, txtStartWeek.Text)
+                Else
+                    Dim temp As New PictureBox
+                    If CInt(txtStartYear.Text) = 1 Then
+                        temp.Location = New Point(350, 75)
+                        Dim str = My.Application.Info.DirectoryPath
+                        str = str.Replace("\bin", "")
+                        str = str.Replace("\Debug", "")
+                        str = str & "\My Project\tempFile.jpg"
+                        temp.Image = Image.FromFile(str)
+                        temp.Height = 225
+                        temp.Width = 225
+                        Controls.Add(temp)
+                        temp.BringToFront()
+                    End If
+                    MsgBox("Date Must be between 1800 and the current year (" & Now().Year & ") and Week must be greater than 0 and less than the current week (" & Math.Ceiling(Convert.ToDouble(Now().DayOfYear) / 7) & ")")
+                    Controls.Remove(temp)
                 End If
             End If
         End If
